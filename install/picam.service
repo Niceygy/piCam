@@ -1,0 +1,14 @@
+[Unit]
+Description=PiCam Server
+
+[Service]
+ExecStart=/app/picam.sh
+
+WorkingDirectory=/home/
+
+Restart=always
+
+User=app
+
+[Install]
+WantedBy=multi-user.target
