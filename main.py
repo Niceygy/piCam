@@ -27,7 +27,7 @@ def takePhoto():
     file = imageDir + fileName
     file = "'" + file + "'"
     # camera.capture(fileName)
-    subprocess.run("raspistill -o " + file, shell=True)
+    subprocess.run("raspistill -o - >> " + file, shell=True)
     print("Captured image " + fileName + " to /home/" + user() + "/picam/")
 
 def photoEverySec(seconds, number):
