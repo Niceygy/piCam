@@ -1,3 +1,4 @@
+import time
 from picamera import PiCamera #camera
 from time import sleep
 import datetime
@@ -35,6 +36,22 @@ def photoEverySec(seconds, number):
 def liveCam():
     camera.start_preveiw
 
+def test():
+    from picamera2 import Picamera2, Preview
+
+    picam = Picamera2()
+
+    config = picam.create_preview_configuration()
+    picam.configure(config)
+
+    picam.start_preview(Preview.QTGL)
+
+    picam.start()
+    time.sleep(2)
+    picam.capture_file("test-python.jpg")
+
+    picam.close()
+
 def main():
     print("Select operation: ")
     print("1. Live feed")
@@ -58,5 +75,10 @@ def main():
         photoEverySec(secs, num)
     elif (operation == 5):
         return
+    elif (operation == 6):
+        test()
+    else:
+        print("Invalid input")
+        main()
     
 main()
