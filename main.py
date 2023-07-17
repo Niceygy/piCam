@@ -1,15 +1,15 @@
 import time
-from picamera import PiCamera #camera
+#from picamera import PiCamera #camera
 from time import sleep
 import datetime
 import getpass #what user
 import shutil# file moving
-from threading import Thread # 2 things at once
+import subprocess #camera only works with leagcy shell commands
 
 def user():
     return getpass.getuser()
 
-camera = PiCamera()
+# camera = PiCamera()
 imageDir = "/home/" + user() + "/picam/" # e.g: user "test" would have a dir of /home/test/picam/
 
 def dateTime():
@@ -19,7 +19,8 @@ def dateTime():
 
 def takePhoto():
     fileName = dateTime + ".jpg"
-    camera.capture(fileName)
+    # camera.capture(fileName)
+    subprocess.run("raspistill -o " + fileName, shell=True)
     shutil.move(fileName, imageDir)
     print("Captured image " + fileName + " to /home/" + user() + "/picam/")
 
@@ -34,23 +35,8 @@ def photoEverySec(seconds, number):
 
 
 def liveCam():
-    camera.start_preveiw
+    subprocess.run("raspistill -t 0", shell=True)
 
-def test():
-    from picamera2 import Picamera2, Preview
-
-    picam = Picamera2()
-
-    config = picam.create_preview_configuration()
-    picam.configure(config)
-
-    picam.start_preview(Preview.QTGL)
-
-    picam.start()
-    time.sleep(2)
-    picam.capture_file("test-python.jpg")
-
-    picam.close()
 
 def main():
     print("Select operation: ")
@@ -76,7 +62,7 @@ def main():
     elif (operation == 5):
         return
     elif (operation == 6):
-        test()
+        print("Debig mode")
     else:
         print("Invalid input")
         main()
