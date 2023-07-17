@@ -57,3 +57,5 @@ def main():
         photoEverySec(secs, num)
     elif (operation == 5):
         return
+    
+main()
