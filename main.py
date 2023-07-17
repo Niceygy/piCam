@@ -14,8 +14,11 @@ def user():
 imageDir = "/home/" + user() + "/picam/" # e.g: user "test" would have a dir of /home/test/picam/
 
 def dateTime():
-    now = datetime.datetime.now()
-    res = str(now)
+    # now = datetime.datetime.now()
+    d = datetime.date(2015,1,5)
+
+    unixtime = time.mktime(d.timetuple())
+    res = str(unixtime)
     return res
 
 def takePhoto():
