@@ -12,7 +12,7 @@ imageDir = "/home/" + user() + "/picam/" # e.g: user "test" would have a dir of 
 
 def run(cmd):
     runCmd = "bash -c " + cmd
-    subprocess.run(runCmd, shell=True)
+    return subprocess.run(runCmd, shell=True)
 
 def dateTime():
     d = datetime.date(2015,1,5)
@@ -38,7 +38,15 @@ def photoEverySec(seconds, number):
         takePhoto()
         sleep(int(seconds))
 
+def startup():
+    firstStart = run("cat config.txt")
+    if (firstStart != "Version v1.1"):
+        run("touch config.txt && echo Version v1.1 >> config.txt")
+        run("mkdir /home/$USER/picam && mkdir /home/$USER/pivid")
+    else:
+        return
 
+    
 def liveCam(time):
     if (time / time != 0):
         time = 100
@@ -56,6 +64,7 @@ def video(time=10):
     run(cmd)
 
 def main():
+    startup()
     print("Select operation: ")
     print("1. Live feed")
     print("2. Take image")
