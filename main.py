@@ -22,6 +22,7 @@ def takePhoto():
     now = str(dateTime())
     fileName = now + ".jpg"
     file = imageDir + fileName
+    file = "'" + file + "'"
     # camera.capture(fileName)
     subprocess.run("raspistill -o " + file, shell=True)
     print("Captured image " + fileName + " to /home/" + user() + "/picam/")
