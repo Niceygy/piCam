@@ -39,10 +39,12 @@ def photoEverySec(seconds, number):
         sleep(int(seconds))
 
 
-def liveCam(time=100):
-    time = str(time)
+def liveCam(time):
+    if (time / time != 0):
+        time = 100
     time = time * 1000
-    run("raspistill -t " + time)
+    time = str(time)
+    run("raspivid --focus -t " + time)
 
 def video(time=10):
     time = int(time)
@@ -67,7 +69,7 @@ def main():
         takePhoto()
     elif (operation == 3):
         videoTime = input("How many seconds? ")
-        video(videoTime)
+        video(int(videoTime))
     elif (operation == 4):
         secs = input("How many seconds between photos? ")
         num = input("How many photos? ")
