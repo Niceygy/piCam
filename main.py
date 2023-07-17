@@ -64,7 +64,8 @@ def main():
     print("5. Exit")
     operation = int(input())
     if (operation == 1):
-        liveCam()
+        liveFeedTime = input("How long for? (100S)")
+        liveCam(liveFeedTime)
     elif (operation == 2):
         takePhoto()
     elif (operation == 3):
