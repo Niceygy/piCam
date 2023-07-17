@@ -19,7 +19,8 @@ def dateTime():
     return res
 
 def takePhoto():
-    fileName = dateTime + ".jpg"
+    now = str(dateTime())
+    fileName = now + ".jpg"
     # camera.capture(fileName)
     subprocess.run("raspistill -o " + fileName, shell=True)
     shutil.move(fileName, imageDir)
