@@ -21,9 +21,9 @@ def dateTime():
 def takePhoto():
     now = str(dateTime())
     fileName = now + ".jpg"
+    file = imageDir + fileName
     # camera.capture(fileName)
-    subprocess.run("raspistill -o " + fileName, shell=True)
-    shutil.move(fileName, imageDir)
+    subprocess.run("raspistill -o " + file, shell=True)
     print("Captured image " + fileName + " to /home/" + user() + "/picam/")
 
 def photoEverySec(seconds, number):
@@ -40,12 +40,20 @@ def liveCam(time=0):
     time = str(time)
     subprocess.run("raspistill -t " + time, shell=True)
 
+def video(time=10):
+    time = int(time)
+    time = time * 1000
+    dir = "/home/" + user() + "/pivid/"
+    fileName = dateTime() + ".h264"
+    file = dir + fileName
+    cmd = "raspivid  -o " + file
+    subprocess.run(cmd, shell=True)
 
 def main():
     print("Select operation: ")
     print("1. Live feed")
     print("2. Take image")
-    print("3. Live feed and take an image every x seconds")
+    print("3. Take a video of x seconds")
     print("4. Take an image every x seconds")
     print("5. Exit")
     operation = int(input())
@@ -54,9 +62,8 @@ def main():
     elif (operation == 2):
         takePhoto()
     elif (operation == 3):
-        secs1 = input("How many seconds between photos? ")
-        num1 = input("How many photos? ")
-        print("Not yet finished, sorry!")
+        videoTime = input("How many seconds? ")
+
 
     elif (operation == 4):
         secs = input("How many seconds between photos? ")
