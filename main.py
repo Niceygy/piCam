@@ -50,6 +50,7 @@ def main():
     elif (operation == 3):
         secs1 = input("How many seconds between photos? ")
         num1 = input("How many photos? ")
+        print("Not yet finished, sorry!")
 
     elif (operation == 4):
         secs = input("How many seconds between photos? ")
