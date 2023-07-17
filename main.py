@@ -50,7 +50,7 @@ def video(time=10):
     dir = "/home/" + user() + "/pivid/"
     fileName = dateTime() + ".h264"
     file = dir + fileName
-    cmd = "raspivid  -o " + file
+    cmd = "raspivid  -o - >> " + file
     subprocess.run(cmd, shell=True)
 
 def main():
