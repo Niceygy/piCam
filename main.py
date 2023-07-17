@@ -5,6 +5,7 @@ import datetime
 import getpass #what user
 import shutil# file moving
 import subprocess #camera only works with leagcy shell commands
+import RPI.GPIO as GPIO #GPIO for lights
 
 def user():
     return getpass.getuser()
@@ -34,8 +35,8 @@ def photoEverySec(seconds, number):
         sleep(int(seconds))
 
 
-def liveCam():
-    subprocess.run("raspistill -t 0", shell=True)
+def liveCam(time=0):
+    subprocess.run("raspistill -t " + time, shell=True)
 
 
 def main():
@@ -62,7 +63,14 @@ def main():
     elif (operation == 5):
         return
     elif (operation == 6):
-        print("Debig mode")
+        print("Debug mode starting...")
+        print("Live feed started for 5 seconds")
+        liveCam(5)
+        print("Taking photo...")
+        takePhoto()
+        print("Taking photo every 2 seconds for 10 seconds...")
+        photoEverySec(2, 5)
+        print("Debug mode finished!")
     else:
         print("Invalid input")
         main()
