@@ -36,6 +36,7 @@ def photoEverySec(seconds, number):
 
 
 def liveCam(time=0):
+    time = str(time)
     subprocess.run("raspistill -t " + time, shell=True)
 
 
