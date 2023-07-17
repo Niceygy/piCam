@@ -1,20 +1,16 @@
 import time
-#from picamera import PiCamera #camera
 from time import sleep
 import datetime
 import getpass #what user
-import shutil# file moving
 import subprocess #camera only works with leagcy shell commands
-#import RPI.GPIO as GPIO #GPIO for lights
+
 
 def user():
     return getpass.getuser()
 
-# camera = PiCamera()
 imageDir = "/home/" + user() + "/picam/" # e.g: user "test" would have a dir of /home/test/picam/
 
 def dateTime():
-    # now = datetime.datetime.now()
     d = datetime.date(2015,1,5)
 
     unixtime = time.mktime(d.timetuple())
@@ -26,7 +22,6 @@ def takePhoto():
     fileName = now + ".jpg"
     file = imageDir + fileName
     file = "'" + file + "'"
-    # camera.capture(fileName)
     subprocess.run("raspistill --focus -o - >> " + file, shell=True)
     print("Captured image " + fileName + " to /home/" + user() + "/picam/")
 
