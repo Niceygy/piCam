@@ -10,6 +10,10 @@ def user():
 
 imageDir = "/home/" + user() + "/picam/" # e.g: user "test" would have a dir of /home/test/picam/
 
+def run(cmd):
+    runCmd = "bash -c " + cmd
+    subprocess.run(runCmd, shell=True)
+
 def dateTime():
     d = datetime.date(2015,1,5)
 
@@ -22,7 +26,7 @@ def takePhoto():
     fileName = now + ".jpg"
     file = imageDir + fileName
     file = "'" + file + "'"
-    subprocess.run("raspistill --focus -o - >> " + file, shell=True)
+    run("raspistill --focus -o - >> " + file)
     print("Captured image " + fileName + " to /home/" + user() + "/picam/")
 
 def photoEverySec(seconds, number):
@@ -37,7 +41,8 @@ def photoEverySec(seconds, number):
 
 def liveCam(time=100):
     time = str(time)
-    subprocess.run("raspistill -t " + time, shell=True)
+    time = time * 1000
+    run("raspistill -t " + time)
 
 def video(time=10):
     time = int(time)
@@ -46,7 +51,7 @@ def video(time=10):
     fileName = dateTime() + ".h264"
     file = dir + fileName
     cmd = "raspivid  -o - >> " + file
-    subprocess.run(cmd, shell=True)
+    run(cmd)
 
 def main():
     print("Select operation: ")
