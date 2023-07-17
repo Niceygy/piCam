@@ -5,7 +5,7 @@ import datetime
 import getpass #what user
 import shutil# file moving
 import subprocess #camera only works with leagcy shell commands
-import RPI.GPIO as GPIO #GPIO for lights
+#import RPI.GPIO as GPIO #GPIO for lights
 
 def user():
     return getpass.getuser()
