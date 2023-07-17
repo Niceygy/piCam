@@ -67,8 +67,7 @@ def main():
         takePhoto()
     elif (operation == 3):
         videoTime = input("How many seconds? ")
-
-
+        video(videoTime)
     elif (operation == 4):
         secs = input("How many seconds between photos? ")
         num = input("How many photos? ")
