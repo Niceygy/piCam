@@ -40,7 +40,7 @@ def photoEverySec(seconds, number):
         sleep(int(seconds))
 
 
-def liveCam(time=0):
+def liveCam(time=100):
     time = str(time)
     subprocess.run("raspistill -t " + time, shell=True)
 
