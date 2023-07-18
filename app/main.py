@@ -17,10 +17,10 @@ def f1():
     cameraControl.liveCam()
 
 def f2():
-    LEDcontrol.rotateLED()
+    IO.checkForLightsMove()
 
 def f3():
-    LEDcontrol.LEDtoggle()
+    IO.checkForLightsToggle()
 
 def main():
     #startup()
