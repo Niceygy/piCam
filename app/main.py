@@ -21,7 +21,7 @@ def main():
     print("5. Exit")
     operation = int(input())
     if (operation == 1):
-        cameraControl.liveCam("default")
+        cameraControl.liveCam()
     elif (operation == 2):
         cameraControl.takePhoto()
     elif (operation == 3):
