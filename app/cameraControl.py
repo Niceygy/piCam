@@ -25,7 +25,7 @@ def takePhoto():
     file = imageDir + fileName
     file = "'" + file + "'"
     run("raspistill --focus -o - >> " + file)
-    print("Captured image " + fileName + " to /home/" + user() + "/picam/")
+    print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
 
 def photoEverySec(seconds, number):
     if (int(number) / int(number) != 0):

@@ -5,6 +5,7 @@
 from gpiozero import Button
 from signal import pause
 import ledControl as LEDcontrol
+import cameraControl as CameraControl
 
 # def checkForLightsToggle():
 #     LTbutton = Button(17)
@@ -22,9 +23,11 @@ import ledControl as LEDcontrol
 def handleButtons():
     LMbutton = Button(22)  # Light Move
     LTbutton = Button(17)  # Light toggle
+    TPbutton = Button(27)  # Take Photo
     print("Button handler running")
 
     LMbutton.when_pressed = LEDcontrol.rotateLED
     LTbutton.when_pressed = LEDcontrol.LEDtoggle
+    TPbutton.when_pressed = CameraControl.takePhoto
 
     pause()
