@@ -18,7 +18,9 @@ def dateTime():
     return res
 
 def takePhoto():
-    now = str(time.time())
+    nowArr = str(time.time())
+    nowArr = nowArr.split(".")
+    now = nowArr[0]
     fileName = now + ".jpg"
     file = imageDir + fileName
     file = "'" + file + "'"
