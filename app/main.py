@@ -22,6 +22,8 @@ def main():
     operation = int(input())
     if (operation == 1):
         liveFeedTime = input("How long for? (infinite) ")
+        if (liveFeedTime == ""):
+            liveFeedTime = "none"
         cameraControl.liveCam(liveFeedTime)
     elif (operation == 2):
         cameraControl.takePhoto()
