@@ -1,7 +1,7 @@
 import getpass #what user
 import subprocess #camera only works with leagcy shell commands
-from time import sleep, time
-import datetime
+from time import sleep
+import time
 
 def user():
     return getpass.getuser()
