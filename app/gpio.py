@@ -14,5 +14,7 @@ def checkForLightsToggle():
 
 def checkForLightsMove():
     LMbutton = Button(22)
-    LMbutton.when_pressed = LEDcontrol.rotateLED()
+    LMbutton.when_pressed = print("Aha!") #LEDcontrol.rotateLED()
     pause()
+
+checkForLightsMove()
