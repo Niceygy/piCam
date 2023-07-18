@@ -4,9 +4,9 @@ from time import sleep
 import time
 
 def user():
-    return getpass.getuser()
+    return "oliver"
 
-imageDir = "/home/" + user() + "/picam/" # e.g: user "test" would have a dir of /home/test/picam/
+imageDir = "/home/" + user() + "/picam/images" # e.g: user "test" would have a dir of /home/test/picam/
 
 def run(cmd):
     runCmd = "bash -c " + cmd
