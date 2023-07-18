@@ -20,9 +20,10 @@ def main():
 
     operation = int(argOne)
     if (operation == 1):
-        print("Starting live feed")
+        print("Starting LED toggle manager...")
         IO.checkForLightsToggle()
     elif (operation == 2):
+        print("Starting LED movement manager...")
         IO.checkForLightsMove()
     
 main()
