@@ -2,7 +2,6 @@ import ledControl as LEDcontrol
 import cameraControl as cameraControl
 import sys
 import gpio as IO
-import ray
 argOne = sys.argv[1]
 
 def startup(): # check if it need to create photo and video dirs
