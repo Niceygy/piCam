@@ -11,15 +11,14 @@ def startup(): # check if it need to create photo and video dirs
         cameraControl.run("mkdir /home/$USER/picam && mkdir /home/$USER/pivid")
     else:
         return
-ray.init()
 
-@ray.remote
+
 def f1():
     cameraControl.liveCam()
-@ray.remote
+
 def f2():
     LEDcontrol.rotateLED()
-@ray.remote
+
 def f3():
     LEDcontrol.LEDtoggle()
 
