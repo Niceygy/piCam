@@ -1,0 +1,1 @@
+raspivid --focus -t 0
