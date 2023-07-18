@@ -8,7 +8,7 @@ import ledControl as LEDcontrol
 
 def checkForLightsToggle():
     LTbutton = Button(17)
-    LTbutton.when_pressed = LEDcontrol.LEDtoggle()
+    LTbutton.when_pressed = LEDcontrol.LEDtoggle
     pause()
 
 
