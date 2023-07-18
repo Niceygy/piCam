@@ -6,7 +6,7 @@ LEDcount = range(15) # 0 through 15
 
 def LEDon():
     for i in LEDcount:
-        pixels[i] = (255, 255, 150)
+        pixels[i] = (255, 225, 100)
         i = i + 1
 
 def LEDoff():

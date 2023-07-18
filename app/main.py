@@ -1,6 +1,8 @@
 import ledControl as LEDcontrol
 import cameraControl as cameraControl
+import sys
 
+argOne = sys.argv[1]
 
 def startup(): # check if it need to create photo and video dirs
     firstStart = cameraControl.run("cat config.txt")
@@ -13,14 +15,20 @@ def startup(): # check if it need to create photo and video dirs
 def main():
     #startup()
     LEDcontrol.LEDon()
-    print("Select operation: ")
-    print("1. Live feed")
-    print("2. Take image")
-    print("3. Take a video of x seconds")
-    print("4. Take an image every x seconds")
-    print("5. Exit")
+    if (argOne != None): 
+                    print("Using automatic input")
+                    operation = int(argOne)
+    else:
+         
+        print("Select operation: ")
+        print("1. Live feed")
+        print("2. Take image")
+        print("3. Take a video of x seconds")
+        print("4. Take an image every x seconds")
+        print("5. Exit")
     
-    operation = int(input())
+        operation = int(input())
+        
     print(operation)
     if (operation == 1):
         cameraControl.liveCam()
