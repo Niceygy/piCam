@@ -2,7 +2,7 @@
 #GPIO List: 
 #   Lights: Pin 2 (5v), Pin 18 (Data), Pin 14 (Ground)
 #   Buttons: Pin 1 (3v3), Pin {17, 22, 27} (Inputs), Pin 20 (Ground)
-from GPIOzero import Button
+from gpiozero import Button
 from signal import pause
 import ledControl as LEDcontrol
 
