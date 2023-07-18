@@ -38,7 +38,7 @@ def photoEverySec(seconds, number):
 
 def liveCam(time):
     time = int(time)
-    if (time == "none"):
+    if (time == "default"):
         while True:
             run("raspivid --focus -t 10000000")
     else:

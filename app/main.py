@@ -21,10 +21,7 @@ def main():
     print("5. Exit")
     operation = int(input())
     if (operation == 1):
-        liveFeedTime = input("How long for? (infinite) ")
-        if (liveFeedTime == ""):
-            liveFeedTime = "none"
-        cameraControl.liveCam(liveFeedTime)
+        cameraControl.liveCam("default")
     elif (operation == 2):
         cameraControl.takePhoto()
     elif (operation == 3):
