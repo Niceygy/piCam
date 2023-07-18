@@ -29,10 +29,12 @@ def LEDtoggle():
         LEDtoggleStatus =  LEDtoggleStatus - 1
 
 def rotateLED():
+    print("Rotating LED")
     LEDrotateInt = LEDrotate + 3
     litLED1 = LEDrotateInt #8
     litLED2 = LEDrotateInt - 1 #7
     litLED3 = LEDrotateInt - 2 #6
+    print("Lighting up LED: " + str(litLED1) + " " + str(litLED2) + " " + str(litLED3) + " ")
     for i in LEDcount:
         if i == litLED1:
             pixels[i] = (255, 100, 1)
