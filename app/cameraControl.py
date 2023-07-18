@@ -23,8 +23,9 @@ def takePhoto():
     now = nowArr[0]
     fileName = now + ".jpg"
     file = imageDir + fileName
-    file = "'" + file + "'"
-    run("raspistill --focus -t 1 -o - >> " + fileName)
+    #file = "'" + file + "'"
+    run("raspistill --focus -t 1 -o - >> " + file)
+    print("mv "  + fileName + " images/")
     run("mv "  + fileName + " images/")
     print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
 
