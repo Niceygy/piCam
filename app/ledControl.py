@@ -13,3 +13,5 @@ def LEDoff():
     for i in LEDcount:
         pixels[i] = (0, 0, 0)
         i = i + 1
+LEDoff() #if you run this file manually, it will turn off the LED
+#it wont normall be run, just imported from
