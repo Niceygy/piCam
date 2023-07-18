@@ -2,6 +2,9 @@ import getpass #what user
 import subprocess #camera only works with leagcy shell commands
 from time import sleep
 import time
+import numpy as np
+import cv2
+import pyautogui
 
 def user():
     return "oliver"
@@ -21,10 +24,22 @@ def takePhoto():
     nowArr = str(time.time())
     nowArr = nowArr.split(".")
     now = nowArr[0]
-    fileName = now + ".jpg"
+    fileName = now + ".png"
     file = imageDir + fileName
     file = "'" + file + "'"
-    run("raspistill --focus -o - >> " + file)
+    # run("raspistill --focus -o - >> " + file)
+    # take screenshot using pyautogui
+    image = pyautogui.screenshot()
+   
+    # since the pyautogui takes as a 
+    # PIL(pillow) and in RGB we need to 
+    # convert it to numpy array and BGR 
+    # so we can write it to the disk
+    image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+   
+    # writing it to the disk using opencv
+    cv2.imwrite(fileName, image)
+    run("mv *.png images/")
     print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
 
 def photoEverySec(seconds, number):
