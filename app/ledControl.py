@@ -31,7 +31,10 @@ def LEDtoggle():
 def rotateLED():
     print("Rotating LED")
     global LEDrotate
-    LEDrotateInt = LEDrotate + 3
+    if (LEDrotate + 3 > 16):
+        LEDrotateInt = 3
+    else:
+        LEDrotateInt = LEDrotate + 3
     LEDrotate = LEDrotateInt
     litLED1 = LEDrotateInt #8
     litLED2 = LEDrotateInt - 1 #7
