@@ -1,70 +1,18 @@
-import time
-from time import sleep
-import datetime
-import getpass #what user
-import subprocess #camera only works with leagcy shell commands
+import ledControl as LEDcontrol
+import cameraControl as cameraControl
 
 
-def user():
-    return getpass.getuser()
-
-imageDir = "/home/" + user() + "/picam/" # e.g: user "test" would have a dir of /home/test/picam/
-
-def run(cmd):
-    runCmd = "bash -c " + cmd
-    return subprocess.run(runCmd, shell=True)
-
-def dateTime():
-    d = datetime.date(2015,1,5)
-
-    unixtime = time.mktime(d.timetuple())
-    res = str(unixtime)
-    return res
-
-def takePhoto():
-    now = str(dateTime())
-    fileName = now + ".jpg"
-    file = imageDir + fileName
-    file = "'" + file + "'"
-    run("raspistill --focus -o - >> " + file)
-    print("Captured image " + fileName + " to /home/" + user() + "/picam/")
-
-def photoEverySec(seconds, number):
-    if (int(number) / int(number) != 0):
-        number = 1000
-    i = 0
-    while number > i:
-        i = i + 1
-        takePhoto()
-        sleep(int(seconds))
-
-def startup():
-    firstStart = run("cat config.txt")
+def startup(): # check if it need to create photo and video dirs
+    firstStart = cameraControl.run("cat config.txt")
     if (firstStart != "Version v1.1"):
-        run("touch config.txt && echo Version v1.1 >> config.txt")
-        run("mkdir /home/$USER/picam && mkdir /home/$USER/pivid")
+        cameraControl.run("touch config.txt && echo Version v1.1 >> config.txt")
+        cameraControl.run("mkdir /home/$USER/picam && mkdir /home/$USER/pivid")
     else:
         return
 
-    
-def liveCam(time):
-    if (time / time != 0):
-        time = 100
-    time = time * 1000
-    time = str(time)
-    run("raspivid --focus -t " + time)
-
-def video(time=10):
-    time = int(time)
-    time = time * 1000
-    dir = "/home/" + user() + "/pivid/"
-    fileName = dateTime() + ".h264"
-    file = dir + fileName
-    cmd = "raspivid  -o - >> " + file
-    run(cmd)
-
 def main():
     startup()
+    LEDcontrol.LEDon()
     print("Select operation: ")
     print("1. Live feed")
     print("2. Take image")
@@ -73,27 +21,27 @@ def main():
     print("5. Exit")
     operation = int(input())
     if (operation == 1):
-        liveFeedTime = input("How long for? (100S)")
-        liveCam(liveFeedTime)
+        liveFeedTime = input("How long for? (infinite) ")
+        cameraControl.liveCam(liveFeedTime)
     elif (operation == 2):
-        takePhoto()
+        cameraControl.takePhoto()
     elif (operation == 3):
         videoTime = input("How many seconds? ")
-        video(int(videoTime))
+        cameraControl.video(int(videoTime))
     elif (operation == 4):
         secs = input("How many seconds between photos? ")
         num = input("How many photos? ")
-        photoEverySec(secs, num)
+        cameraControl.photoEverySec(secs, num)
     elif (operation == 5):
         return
     elif (operation == 6):
         print("Debug mode starting...")
         print("Live feed started for 5 seconds")
-        liveCam(5)
+        cameraControl.liveCam(5)
         print("Taking photo...")
-        takePhoto()
+        cameraControl.takePhoto()
         print("Taking photo every 2 seconds for 10 seconds...")
-        photoEverySec(2, 5)
+        cameraControl.photoEverySec(2, 5)
         print("Debug mode finished!")
     else:
         print("Invalid input")

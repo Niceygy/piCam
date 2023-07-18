@@ -1,0 +1,15 @@
+import board
+import neopixel 
+
+pixels = neopixel.NeoPixel(board.D18, 16) # assign GPIO 18 for 16 LEDs
+LEDcount = range(15) # 0 through 15
+
+def LEDon():
+    for i in LEDcount:
+        pixels[i] = (255, 255, 200)
+        i = i + 1
+
+def LEDoff():
+    for i in LEDcount:
+        pixels[i] = (0, 0, 0)
+        i = i + 1
