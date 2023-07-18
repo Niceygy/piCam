@@ -11,7 +11,7 @@ def startup(): # check if it need to create photo and video dirs
         return
 
 def main():
-    startup()
+    #startup()
     LEDcontrol.LEDon()
     print("Select operation: ")
     print("1. Live feed")
