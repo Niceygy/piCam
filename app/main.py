@@ -2,8 +2,7 @@ import ledControl as LEDcontrol
 import cameraControl as cameraControl
 import sys
 import gpio as IO
-from threading import Thread
-
+import ray
 argOne = sys.argv[1]
 
 def startup(): # check if it need to create photo and video dirs
@@ -13,6 +12,17 @@ def startup(): # check if it need to create photo and video dirs
         cameraControl.run("mkdir /home/$USER/picam && mkdir /home/$USER/pivid")
     else:
         return
+ray.init()
+
+@ray.remote
+def f1():
+    cameraControl.liveCam()
+@ray.remote
+def f2():
+    LEDcontrol.rotateLED()
+@ray.remote
+def f3():
+    LEDcontrol.LEDtoggle()
 
 def main():
     #startup()
@@ -61,10 +71,9 @@ def main():
     operation = int(argOne)
     if (operation == 1):
         print("Starting live feed")
-        if __name__ == '__main__':
-            Thread(IO.checkForLightsToggle()).start()
-            Thread(IO.checkForLightsMove()).start()
-            Thread(cameraControl.liveCam()).start()
-
+        f2()
+        f3()
+        f1()
+    
     
 main()
