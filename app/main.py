@@ -69,9 +69,8 @@ def main():
     operation = int(argOne)
     if (operation == 1):
         print("Starting live feed")
-        f2()
         f3()
+        f2()
         f1()
-    
     
 main()
