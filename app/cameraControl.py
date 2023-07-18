@@ -6,7 +6,7 @@ import time
 def user():
     return "oliver"
 
-imageDir = "/home/" + user() + "/picam/images" # e.g: user "test" would have a dir of /home/test/picam/
+imageDir = "/home/" + user() + "/picam/images/" # e.g: user "test" would have a dir of /home/test/picam/
 
 def run(cmd):
     runCmd = "bash -c " + cmd
