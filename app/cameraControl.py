@@ -13,9 +13,7 @@ def run(cmd):
     return subprocess.run(runCmd, shell=True)
 
 def dateTime():
-    d = datetime.date(2015,1,5)
-
-    unixtime = time.mktime(d.timetuple())
+    unixtime = run("date +%s")
     res = str(unixtime)
     return res
 
