@@ -19,6 +19,7 @@ def LEDoff():
         i = i + 1
 
 def LEDtoggle():
+    print("Toggling LED")
     global LEDtoggleStatus
     if (LEDtoggleStatus == 0):
         LEDoff()

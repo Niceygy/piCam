@@ -62,9 +62,9 @@ def main():
     if (operation == 1):
         print("Starting live feed")
         if __name__ == '__main__':
-            Thread(cameraControl.liveCam()).start()
-            Thread(IO.checkForLightsMove()).start()
             Thread(IO.checkForLightsToggle()).start()
+            Thread(IO.checkForLightsMove()).start()
+            Thread(cameraControl.liveCam()).start()
 
     
 main()
