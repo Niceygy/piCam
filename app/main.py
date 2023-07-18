@@ -19,7 +19,9 @@ def main():
     print("3. Take a video of x seconds")
     print("4. Take an image every x seconds")
     print("5. Exit")
+    
     operation = int(input())
+    print(operation)
     if (operation == 1):
         cameraControl.liveCam()
     elif (operation == 2):
