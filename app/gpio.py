@@ -11,11 +11,13 @@ def checkForLightsToggle():
     LTbutton.when_pressed = LEDcontrol.LEDtoggle()
     pause()
 
+def testa():
+    print("aha")
 
 def checkForLightsMove():
     LMbutton = Button(22)
     print("debig")
-    LMbutton.when_pressed = print("Aha!") #LEDcontrol.rotateLED()
+    LMbutton.when_pressed = testa #LEDcontrol.rotateLED()
     pause()
 
 checkForLightsMove()
