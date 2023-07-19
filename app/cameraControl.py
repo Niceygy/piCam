@@ -1,4 +1,3 @@
-import getpass #what user
 import subprocess #camera only works with leagcy shell commands
 from time import sleep
 import time
@@ -17,26 +16,23 @@ def dateTime():
     res = str(unixtime)
     return res
 
-def takePhoto():
-    nowArr = str(time.time())
-    nowArr = nowArr.split(".")
-    now = nowArr[0]
-    fileName = now + ".jpg"
-    file = imageDir + fileName
-    #file = "'" + file + "'"
-    run("raspistill --focus -t 1 -o - >> " + file)
-    # print("mv "  + fileName + " images/")
-    # run("mv "  + fileName + " images/")
-    print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
+# def takePhoto(): will be handled on the image processor
+#     nowArr = str(time.time())
+#     nowArr = nowArr.split(".")
+#     now = nowArr[0]
+#     fileName = now + ".jpg"
+#     file = imageDir + fileName
+#     run("raspistill --focus -t 1 -o - >> " + file)
+#     print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
 
-def photoEverySec(seconds, number):
-    if (int(number) / int(number) != 0):
-        number = 1000
-    i = 0
-    while number > i:
-        i = i + 1
-        takePhoto()
-        sleep(int(seconds))
+# def photoEverySec(seconds, number):
+#     if (int(number) / int(number) != 0):
+#         number = 1000
+#     i = 0
+#     while number > i:
+#         i = i + 1
+#         takePhoto()
+#         sleep(int(seconds))
 
 def liveCam():
         print("raspivid --focus -t 0")
