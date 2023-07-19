@@ -1,5 +1,6 @@
 import subprocess
 import requests
+import wget
 def run(cmd):
     runCmd = "bash -c " + cmd
     return subprocess.run(runCmd, shell=True)
@@ -39,9 +40,6 @@ def syncDir():
         for img in imageNames:
               #res = requests.get("http://192.168.1.158:8000/images/"+img)
               print("Loading "+img+" onto disk")
-              print("wget http://192.168.1.158:8000/images/"+img+" -o images/"+img)
-              subprocess.run("wget http://192.168.1.158:8000/images/"+img+" -o images/"+img) #saves to an image on local disk
-            #   file = open(img, "r")
-            #   file.write(res.text)
+              wget.download("http://192.168.1.158:8000/images/"+img, "images/"+img)
               print("Loaded!")
         print("Complete!")
