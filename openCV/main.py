@@ -13,7 +13,7 @@ def main():
         name = input("Specify an image name: ")
         imgName = CVimg.takeTemplateImage(name)
         sleep(1)
-        subprocess.run("mv " + imgName + ".png templates/")
+        #subprocess.run("mv " + imgName + ".png templates/")
         print("Select image to compare against ")
         print(subprocess.run("dir C:/users/oliver/Downloads/picam/templates"))
         template = input()
