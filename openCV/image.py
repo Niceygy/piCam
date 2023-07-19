@@ -3,6 +3,7 @@ import cv2
 import functions as func
 
 camera = cv2.VideoCapture("tcp://192.168.1.158:33")  # type: ignore #listen to the tcp video strem from the PI
+print("Connected!")
 import numpy as np
 from skimage.metrics import structural_similarity  # type: ignore
 
