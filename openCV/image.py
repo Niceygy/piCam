@@ -2,44 +2,13 @@ from time import sleep
 import cv2
 import functions as func
 camera = cv2.VideoCapture("tcp://192.168.1.158:33") # type: ignore #listen to the tcp video strem from the PI
-import subprocess
+import numpy as np
+from skimage.metrics import structural_similarity# type: ignore
 
-def compare(img, template):
-    # load the input image and template image from disk, then display
-    # them on the screen
-    print("Loading images...")
 
-    cv2.imshow("Image", img)
-    cv2.imshow("Template", template)
-
-    # convert both the image and template to grayscale
-    imageGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    templateGray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
-
-    # perform template matching
-    print("Performing template matching...")
-    result = cv2.matchTemplate(imageGray, templateGray,
-    	cv2.TM_CCOEFF_NORMED)
-    (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(result)
-
-    # determine the starting and ending (x, y)-coordinates of the
-    # bounding box
-    (startX, startY) = maxLoc
-    endX = startX + template.shape[1]
-    endY = startY + template.shape[0]
-
-    # draw the bounding box on the image
-    cv2.rectangle(img, (startX, startY), (endX, endY), (255, 0, 0), 3)
-    # show the output image
-    cv2.imshow("Output", img)
-    cv2.waitKey(0)
-
-def showDiffrences(img, template):
-    from skimage.metrics import structural_similarity # type: ignore
-    import numpy as np
-
+def comapre(template, image):
     first = cv2.imread(template)
-    second = cv2.imread(img)
+    second = cv2.imread(image)
 
     # Convert images to grayscale
     first_gray = cv2.cvtColor(first, cv2.COLOR_BGR2GRAY)
@@ -61,13 +30,19 @@ def showDiffrences(img, template):
     contours = contours[0] if len(contours) == 2 else contours[1]
 
     # Highlight differences
-    mask = np.zeros(first.shape, dtype='uint8')
-    filled = second.copy()
+    #mask = np.zeros(first.shape, dtype='uint8')
+    #filled = second.copy()
 
     for c in contours:
         area = cv2.contourArea(c)
         if area > 100:
             x,y,w,h = cv2.boundingRect(c)
+            #cv2.rectangle(first, (x, y), (x + w, y + h), (36,255,12), 2)
+            cv2.rectangle(second, (x, y), (x + w, y + h), (36,255,12), 2)
+            #cv2.drawContours(mask, [c], 0, (0,255,0), -1)
+            #cv2.drawContours(filled, [c], 0, (0,255,0), -1)
+    cv2.imshow('Image comparison - PiCam', second)
+
 
 
 def takeImage(i):
