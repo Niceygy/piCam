@@ -50,7 +50,7 @@ def takeComparisonImage(i):
     return_value, image = camera.read()
     cv2.imwrite("images/"+str(i) + ".png", image)
     print("Saved image as " + str(i) + ".png")
-    res = "image" + str(i) + ".png"
+    res = "images/" + str(i) + ".png"
     return res
 
 def takeTemplateImage(i):
