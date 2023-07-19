@@ -11,7 +11,7 @@ def main():
     operation = operation.lower()
     if operation == "c":
         name = input("Specify an image name: ")
-        imgName = CVimg.takeImage(name)
+        imgName = CVimg.takeTemplateImage(name)
         sleep(1)
         subprocess.run("mv " + imgName + ".png templates/")
         print("Select image to compare against ")

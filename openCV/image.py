@@ -52,6 +52,12 @@ def takeImage(i):
     res = "image" + str(i) + ".png"
     return res
 
+def takeTemplateImage(i):
+    return_value, image = camera.read()
+    cv2.imwrite("templates/"+str(i) + ".png", image)
+    print("Saved image as " + str(i) + ".png")
+    res = "image" + str(i) + ".png"
+    return res
 
 def setTemplateImage():
     name = input("Enter file name for the template: ")
