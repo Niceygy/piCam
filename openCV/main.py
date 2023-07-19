@@ -15,7 +15,7 @@ def main():
     elif (operation == "t"):
         CVimg.setTemplateImage()
     elif (operation == "s"):
-        
+        func.syncDir()
     else:
         return
 
