@@ -2,6 +2,7 @@ from time import sleep
 import cv2
 import functions as func
 
+#############################REPLACE ME!!!!###############################################
 camera = cv2.VideoCapture("tcp://192.168.1.158:33")  # type: ignore #listen to the tcp video strem from the PI
 print("Connected!")
 import numpy as np
