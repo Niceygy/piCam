@@ -15,6 +15,6 @@ def main():
         IO.handleButtons()
     elif operation == 2:
         while True:
-            cameraControl.run("raspivid -l -o tcp://0.0.0.0:33 -t 1000000")
+            cameraControl.run("/home/oliver/picam/app/cam.sh")
 
 main()

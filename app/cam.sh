@@ -1,1 +1,1 @@
-raspivid --focus -t 0
+raspivid -l -o tcp://0.0.0.0:33 -t 1000000
