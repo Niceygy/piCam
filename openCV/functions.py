@@ -8,3 +8,8 @@ def dateTime():
     unixtime = run("date +%s")
     res = str(unixtime)
     return res
+
+def listDir(dir):
+    res = run("ls "+dir)
+    res = str(res)
+    return res

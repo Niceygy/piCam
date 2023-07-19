@@ -1,4 +1,6 @@
+from time import sleep
 import cv2
+camera = cv2.VideoCapture("tcp://192.168.1.158:33") # type: ignore #listen to the tcp video strem from the PI
 
 def compare(img, template):
     # load the input image and template image from disk, then display
@@ -34,8 +36,8 @@ def showDiffrences(img, template):
     from skimage.metrics import structural_similarity
     import numpy as np
 
-    first = cv2.imread('clownfish_1.jpeg')
-    second = cv2.imread('clownfish_2.jpeg')
+    first = cv2.imread(template)
+    second = cv2.imread(img)
 
     # Convert images to grayscale
     first_gray = cv2.cvtColor(first, cv2.COLOR_BGR2GRAY)
@@ -66,3 +68,23 @@ def showDiffrences(img, template):
             x,y,w,h = cv2.boundingRect(c)
 
 
+def takeImage(i):
+    return_value, image = camera.read()
+    cv2.imwrite('image'+str(i)+'.png', image)
+    print("Saved image as " + str(i) + ".png")
+    res = "image"+str(i)+".png"
+    return res
+
+
+def setTemplateImage():
+        name = input("Enter file name for the template: ")
+        print("Using current camera feed. Taking image in 3 seconds")
+        sleep(1)
+        print("2")
+        sleep(1)
+        print("1")
+        takeImage(name)
+
+def compareImages(template, img):
+    print("Comparing "+img+" against "+template)
+    CVimg.compare(img, template)

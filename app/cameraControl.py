@@ -16,14 +16,14 @@ def dateTime():
     res = str(unixtime)
     return res
 
-# def takePhoto(): will be handled on the image processor
-#     nowArr = str(time.time())
-#     nowArr = nowArr.split(".")
-#     now = nowArr[0]
-#     fileName = now + ".jpg"
-#     file = imageDir + fileName
-#     run("raspistill --focus -t 1 -o - >> " + file)
-#     print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
+def takePhoto(): 
+    nowArr = str(time.time())
+    nowArr = nowArr.split(".")
+    now = nowArr[0]
+    fileName = now + ".jpg"
+    file = imageDir + fileName
+    run("raspistill --focus -t 1 -o - >> " + file)
+    print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
 
 # def photoEverySec(seconds, number):
 #     if (int(number) / int(number) != 0):
