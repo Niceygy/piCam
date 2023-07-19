@@ -48,7 +48,6 @@ def compare(template, image):
 def takeImage(i):
     return_value, image = camera.read()
     cv2.imwrite(str(i) + ".png", image)
-    # subprocess.run("mv "+i+".png images/")
     print("Saved image as " + str(i) + ".png")
     res = "image" + str(i) + ".png"
     return res
