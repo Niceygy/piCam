@@ -6,7 +6,7 @@ import numpy as np
 from skimage.metrics import structural_similarity# type: ignore
 
 
-def comapre(template, image):
+def compare(template, image):
     first = cv2.imread(template)
     second = cv2.imread(image)
 
