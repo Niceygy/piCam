@@ -24,7 +24,7 @@ def syncDir():
         for i in arr:
              if ".jpg" in i:
                   validImages.append(i)
-                  print("Found image"+i)
+                  print("Found image "+i)
         imageNames = []
         for g in validImages:
                     h = g.split("=") 
@@ -37,7 +37,7 @@ def syncDir():
                     print("Validated "+k)
                     imageNames.append(k)
         for img in imageNames:
-              res = requests.get("http://192.188.1.158:8000/images/"+img)
+              res = requests.get("http://192.168.1.158:8000/images/"+img)
               print("Loading "+img+" onto disk")
               run("echo "+str(res)+" >> images/"+img) #saves to an image on local disk
         print("Complete!")
