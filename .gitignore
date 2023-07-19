@@ -1,3 +1,5 @@
 /openCV/__pycache__
 .venv
 *.old
+build
+dist
