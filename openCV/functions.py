@@ -14,7 +14,7 @@ def listDir(dir):
     res = str(res)
     return res
 def syncDir():
-        req = requests.get("http://192.188.1.158:8000/images")
+        req = requests.get("http://192.168.1.158:8000/images")
         req = str(req)
         arr = req.splitlines()
         validImages = []
