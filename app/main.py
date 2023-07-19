@@ -13,8 +13,7 @@ def main():
     if operation == 1:
         print("Starting LED  manager...")
         IO.handleButtons()
-    elif operation == 2:
-        while True:
-            cameraControl.run("/home/oliver/picam/app/cam.sh")
+    else:
+        return
 
 main()
