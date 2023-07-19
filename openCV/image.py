@@ -44,6 +44,7 @@ def compare(template, image):
             # cv2.drawContours(mask, [c], 0, (0,255,0), -1)
             # cv2.drawContours(filled, [c], 0, (0,255,0), -1)
     cv2.imshow("Image comparison - PiCam", second)
+    sleep(10)
 
 
 def takeComparisonImage(i):
