@@ -47,6 +47,20 @@ def compare(template, image):
     cv2.imshow("Image comparison - PiCam", second)
     cv2.waitKey()    
     #sleep(10)
+    return score * 100
+
+def getCompareScore(template, image):
+    first = cv2.imread(image)
+    second = cv2.imread(template)
+
+    # Convert images to grayscale
+    first_gray = cv2.cvtColor(first, cv2.COLOR_BGR2GRAY)
+    second_gray = cv2.cvtColor(second, cv2.COLOR_BGR2GRAY)
+
+    # Compute SSIM between two images
+    score, diff = structural_similarity(first_gray, second_gray, full=True)
+    #print("Similarity Score: {:.3f}%".format(score * 100))
+    return score * 100
 
 
 def takeComparisonImage(i):

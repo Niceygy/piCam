@@ -6,8 +6,8 @@ import os
 
 
 def main():
-    print("Compare an image, take a Template image, Sync files from camera or Quit?")
-    operation = input("C/T/S/Q ")
+    print("Compare an image, take a Template image, Sync files from camera or Find board?")
+    operation = input("C/T/S/F ")
     operation = operation.lower()
     if operation == "c":
         name = input("Specify an image name: ")
@@ -23,8 +23,8 @@ def main():
         CVimg.setTemplateImage()
     elif operation == "s":
         func.syncDir()
-    else:
-        return
+    elif operation == "f":
+        print("s")
 
 
 main()
