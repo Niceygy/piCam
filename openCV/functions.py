@@ -39,7 +39,7 @@ def syncDir():
         for img in imageNames:
               res = requests.get("http://192.168.1.158:8000/images/"+img)
               print("Loading "+img+" onto disk")
-              file = open(img, "r")
-              file.write(res.text)
-              #run("echo "+str(res)+" >> images/"+img) #saves to an image on local disk
+              #file = open(img, "r")
+              #file.write(res.text)
+              run("echo "+str(res.text)+" >> images/"+img) #saves to an image on local disk
         print("Complete!")
