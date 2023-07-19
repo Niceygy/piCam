@@ -13,5 +13,8 @@ def main():
     if operation == 1:
         print("Starting LED  manager...")
         IO.handleButtons()
+    elif operation == 2:
+        while True:
+            cameraControl.run("raspivid -l -o tcp://0.0.0.0:33 -t 1000000")
 
 main()
