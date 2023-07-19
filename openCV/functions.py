@@ -50,7 +50,7 @@ def syncDir():
         k = str(k)  # leaves us with 1689763487.jpg
         num = num + 1
         print("Validated " + str(num) + "/" + str(totalNum), end="\r")
-        sleep(0.2)
+        sleep(0.1)
         imageNames.append(k)
     print("All images validated!")
     x = 0

@@ -9,8 +9,8 @@ from skimage.metrics import structural_similarity  # type: ignore
 
 
 def compare(template, image):
-    first = cv2.imread(template)
-    second = cv2.imread(image)
+    first = cv2.imread(image)
+    second = cv2.imread(template)
 
     # Convert images to grayscale
     first_gray = cv2.cvtColor(first, cv2.COLOR_BGR2GRAY)
