@@ -3,6 +3,7 @@ import functions as func
 import image as CVimg
 import subprocess
 from time import sleep
+import os
 
 
 def main():
@@ -13,9 +14,10 @@ def main():
         name = input("Specify an image name: ")
         imgName = CVimg.takeTemplateImage(name)
         sleep(1)
-        #subprocess.run("mv " + imgName + ".png templates/")
+        
         print("Select image to compare against ")
-        print(subprocess.run("dir C:/users/oliver/Downloads/picam/templates"))
+        dir = os.listdir("C://Users//Oliver//Downloads//picam//templates")
+        print(dir)
         template = input()
         CVimg.compare(imgName + ".png", template)
     elif operation == "t":
