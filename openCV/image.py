@@ -5,7 +5,7 @@ camera = cv2.VideoCapture("tcp://192.168.1.158:33") # type: ignore #listen to th
 def compare(img, template):
     # load the input image and template image from disk, then display
     # them on the screen
-    print("[INFO] loading images...")
+    print("Loading images...")
 
     cv2.imshow("Image", img)
     cv2.imshow("Template", template)
@@ -15,7 +15,7 @@ def compare(img, template):
     templateGray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
 
     # perform template matching
-    print("[INFO] performing template matching...")
+    print("Performing template matching...")
     result = cv2.matchTemplate(imageGray, templateGray,
     	cv2.TM_CCOEFF_NORMED)
     (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(result)
@@ -33,7 +33,7 @@ def compare(img, template):
     cv2.waitKey(0)
 
 def showDiffrences(img, template):
-    from skimage.metrics import structural_similarity
+    from skimage.metrics import structural_similarity # type: ignore
     import numpy as np
 
     first = cv2.imread(template)
@@ -85,6 +85,3 @@ def setTemplateImage():
         print("1")
         takeImage(name)
 
-def compareImages(template, img):
-    print("Comparing "+img+" against "+template)
-    CVimg.compare(img, template)
