@@ -14,8 +14,10 @@ def listDir(dir):
     res = str(res)
     return res
 def syncDir():
+        print("Loading URL...")
         req = requests.get("http://192.168.1.158:8000/images")
         req = str(req)
+        print("Recived! Parsing....")
         arr = req.splitlines()
         validImages = []
         for i in arr:
@@ -29,7 +31,9 @@ def syncDir():
                     j = j[1] #leaves us with 1689763487.jpg</a></li>
                     k = j.replace("</a></li>", "")
                     k = str(k) #leaves us with 1689763487.jpg
+                    print("Found image "+k+" , loading image on to disk...")
                     imageNames.append(k)
         for img in imageNames:
               res = requests.get("http://192.188.1.158:8000/images/"+img)
               run("echo "+str(res)+" >> images/"+img) #saves to an image on local disk
+        print("Complete!")
