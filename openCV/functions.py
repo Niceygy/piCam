@@ -1,3 +1,4 @@
+from time import sleep
 import subprocess
 import requests
 import wget
@@ -39,6 +40,7 @@ def syncDir():
                     k = str(k) #leaves us with 1689763487.jpg
                     num = num + 1
                     print("Validated "+str(num)+"/"+str(totalNum), end='\r')
+                    sleep(0.5)
                     imageNames.append(k)
         for img in imageNames:
               #res = requests.get("http://192.168.1.158:8000/images/"+img)
