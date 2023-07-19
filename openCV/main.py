@@ -10,9 +10,9 @@ def main():
         name = input("Specify an image name: ")
         imgName = CVimg.takeImage(name)
         print("Select image to compare against ")
-        subprocess.run("dir C:/users/oliver/Downloads/picam/templates")
+        print(subprocess.run("dir C:/users/oliver/Downloads/picam/templates"))
         template = input()
-        CVimg.compare(imgName, template)
+        CVimg.compare(imgName+".png", template)
     elif (operation == "t"):
         CVimg.setTemplateImage()
     elif (operation == "s"):
