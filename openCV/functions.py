@@ -29,10 +29,13 @@ def syncDir():
     print("Recived! Parsing....")
     arr = req.splitlines()
     validImages = []
+    n = 0
     for i in arr:
         if ".jpg" in i:
             validImages.append(i)
-            print("Found image " + i)
+            n = n + 1
+            print("Found "+str(n)+" images", end="\r")
+    print("Found "+str(n)+" images.")
     imageNames = []
     num = 0
     totalNum = len(validImages)
@@ -48,9 +51,12 @@ def syncDir():
         print("Validated " + str(num) + "/" + str(totalNum), end="\r")
         sleep(0.5)
         imageNames.append(k)
+    print("All images validated!")
+    x = 0
     for img in imageNames:
         # res = requests.get("http://192.168.1.158:8000/images/"+img)
-        print("Loading " + img + " onto disk")
+        x = x + 1
+        print("Loading " + img + " onto disk ("+x+"/"+num+")")
         wget.download("http://192.168.1.158:8000/images/" + img, "images/" + img)
         print(" Loaded!")
     print("Complete!")
