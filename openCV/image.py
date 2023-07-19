@@ -46,9 +46,9 @@ def compare(template, image):
     cv2.imshow("Image comparison - PiCam", second)
 
 
-def takeImage(i):
+def takeComparisonImage(i):
     return_value, image = camera.read()
-    cv2.imwrite(str(i) + ".png", image)
+    cv2.imwrite("images/"+str(i) + ".png", image)
     print("Saved image as " + str(i) + ".png")
     res = "image" + str(i) + ".png"
     return res
@@ -67,4 +67,4 @@ def setTemplateImage():
     print("2")
     sleep(1)
     print("1")
-    takeImage(name)
+    takeTemplateImage(name)
