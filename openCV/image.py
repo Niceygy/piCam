@@ -32,18 +32,19 @@ def compare(template, image):
     contours = contours[0] if len(contours) == 2 else contours[1]
 
     # Highlight differences
-    # mask = np.zeros(first.shape, dtype='uint8')
-    # filled = second.copy()
+    mask = np.zeros(first.shape, dtype='uint8')
+    filled = second.copy()
 
     for c in contours:
         area = cv2.contourArea(c)
         if area > 100:
             x, y, w, h = cv2.boundingRect(c)
-            # cv2.rectangle(first, (x, y), (x + w, y + h), (36,255,12), 2)
+            cv2.rectangle(first, (x, y), (x + w, y + h), (36,255,12), 2)
             cv2.rectangle(second, (x, y), (x + w, y + h), (36, 255, 12), 2)
-            # cv2.drawContours(mask, [c], 0, (0,255,0), -1)
-            # cv2.drawContours(filled, [c], 0, (0,255,0), -1)
+            cv2.drawContours(mask, [c], 0, (0,255,0), -1)
+            cv2.drawContours(filled, [c], 0, (0,255,0), -1)
     cv2.imshow("Image comparison - PiCam", second)
+    cv2.waitKey()    
     sleep(10)
 
 
