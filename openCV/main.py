@@ -1,3 +1,4 @@
+print("Loading....")
 import functions as func
 import image as CVimg
 import subprocess
@@ -9,6 +10,7 @@ def main():
     if (operation == "c"):
         name = input("Specify an image name: ")
         imgName = CVimg.takeImage(name)
+        subprocess.run("mv "+imgName+".png templates/")
         print("Select image to compare against ")
         print(subprocess.run("dir C:/users/oliver/Downloads/picam/templates"))
         template = input()

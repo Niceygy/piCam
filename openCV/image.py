@@ -1,9 +1,10 @@
 from time import sleep
 import cv2
 import functions as func
-camera = cv2.VideoCapture("tcp://192.168.1.158:33") # type: ignore #listen to the tcp video strem from the PI
+
+camera = cv2.VideoCapture("tcp://192.168.1.158:33")  # type: ignore #listen to the tcp video strem from the PI
 import numpy as np
-from skimage.metrics import structural_similarity# type: ignore
+from skimage.metrics import structural_similarity  # type: ignore
 
 
 def compare(template, image):
@@ -19,7 +20,7 @@ def compare(template, image):
     print("Similarity Score: {:.3f}%".format(score * 100))
 
     # The diff image contains the actual image differences between the two images
-    # and is represented as a floating point data type so we must convert the array 
+    # and is represented as a floating point data type so we must convert the array
     # to 8-bit unsigned integers in the range [0,255] before we can use it with OpenCV
     diff = (diff * 255).astype("uint8")
 
@@ -30,36 +31,34 @@ def compare(template, image):
     contours = contours[0] if len(contours) == 2 else contours[1]
 
     # Highlight differences
-    #mask = np.zeros(first.shape, dtype='uint8')
-    #filled = second.copy()
+    # mask = np.zeros(first.shape, dtype='uint8')
+    # filled = second.copy()
 
     for c in contours:
         area = cv2.contourArea(c)
         if area > 100:
-            x,y,w,h = cv2.boundingRect(c)
-            #cv2.rectangle(first, (x, y), (x + w, y + h), (36,255,12), 2)
-            cv2.rectangle(second, (x, y), (x + w, y + h), (36,255,12), 2)
-            #cv2.drawContours(mask, [c], 0, (0,255,0), -1)
-            #cv2.drawContours(filled, [c], 0, (0,255,0), -1)
-    cv2.imshow('Image comparison - PiCam', second)
-
+            x, y, w, h = cv2.boundingRect(c)
+            # cv2.rectangle(first, (x, y), (x + w, y + h), (36,255,12), 2)
+            cv2.rectangle(second, (x, y), (x + w, y + h), (36, 255, 12), 2)
+            # cv2.drawContours(mask, [c], 0, (0,255,0), -1)
+            # cv2.drawContours(filled, [c], 0, (0,255,0), -1)
+    cv2.imshow("Image comparison - PiCam", second)
 
 
 def takeImage(i):
     return_value, image = camera.read()
-    cv2.imwrite(str(i)+'.png', image)
-    #subprocess.run("mv "+i+".png images/")
+    cv2.imwrite(str(i) + ".png", image)
+    # subprocess.run("mv "+i+".png images/")
     print("Saved image as " + str(i) + ".png")
-    res = "image"+str(i)+".png"
+    res = "image" + str(i) + ".png"
     return res
 
 
 def setTemplateImage():
-        name = input("Enter file name for the template: ")
-        print("Using current camera feed. Taking image in 3 seconds")
-        sleep(1)
-        print("2")
-        sleep(1)
-        print("1")
-        takeImage(name)
-
+    name = input("Enter file name for the template: ")
+    print("Using current camera feed. Taking image in 3 seconds")
+    sleep(1)
+    print("2")
+    sleep(1)
+    print("1")
+    takeImage(name)
