@@ -27,6 +27,8 @@ def syncDir():
                   validImages.append(i)
                   print("Found image "+i)
         imageNames = []
+        num = 0
+        totalNum = len(validImages)
         for g in validImages:
                     h = g.split("=") 
                     h = h[1] #leaves us with "1689763487.jpg">1689763487.jpg</a></li>
@@ -35,11 +37,12 @@ def syncDir():
                     k = j.replace("</a></li>", "")
                     k = k.replace("</a", "")
                     k = str(k) #leaves us with 1689763487.jpg
-                    print("Validated "+k)
+                    num = num + 1
+                    print("Validated "+str(num)+"/"+str(totalNum), end='\r')
                     imageNames.append(k)
         for img in imageNames:
               #res = requests.get("http://192.168.1.158:8000/images/"+img)
               print("Loading "+img+" onto disk")
               wget.download("http://192.168.1.158:8000/images/"+img, "images/"+img)
-              print("Loaded!")
+              print(" Loaded!")
         print("Complete!")
