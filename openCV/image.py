@@ -73,7 +73,7 @@ def showDiffrences(img, template):
 def takeImage(i):
     return_value, image = camera.read()
     cv2.imwrite(str(i)+'.png', image)
-    subprocess.run("mv "+i+".png images/")
+    #subprocess.run("mv "+i+".png images/")
     print("Saved image as " + str(i) + ".png")
     res = "image"+str(i)+".png"
     return res
