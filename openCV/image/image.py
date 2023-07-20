@@ -47,22 +47,31 @@ def compare(template, image, findBoard=False):
             if x < 25:
                 print("Removed error")
                 return
-            if y < 25:
+            elif y < 25:
                 print("Removed error")
                 return
-            if w < 25:
+            elif w < 25:
                 print("Removed error")
                 return
-            if h < 25:
+            elif h < 25:
                 print("Removed error")
                 return
-            cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
-            cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
-            print(
-                "W,X,Y,H = " + str(w) + " " + str(x) + " " + str(y) + " " + str(h) + " "
-            )
-            cv2.drawContours(mask, [c], 0, (0, 255, 0), -1)
-            cv2.drawContours(filled, [c], 0, (0, 255, 0), -1)
+            else:
+                cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
+                cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
+                print(
+                    "W,X,Y,H = "
+                    + str(w)
+                    + " "
+                    + str(x)
+                    + " "
+                    + str(y)
+                    + " "
+                    + str(h)
+                    + " "
+                )
+                cv2.drawContours(mask, [c], 0, (0, 255, 0), -1)
+                cv2.drawContours(filled, [c], 0, (0, 255, 0), -1)
 
     if findBoard != False:
         Warr = []
