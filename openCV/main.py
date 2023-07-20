@@ -1,6 +1,7 @@
 print("Loading....")
 import functions as func
 import image.image as CVimg
+import image.findBoard as FB
 from time import sleep
 import os
 
@@ -20,7 +21,16 @@ def main():
         print(dir)
         template = input()
         template = "templates/" + template
-        CVimg.compare(image, template)
+        removeErrs = input(
+            "Would you like to try and remove any errors in the image? (Y/N) "
+        )
+        removeErrs = str(removeErrs).lower()
+        if removeErrs == "y":
+            print("Removing errors...")
+            CVimg.compare(image, template, True)
+        else:
+            CVimg.compare(image, template)
+
     elif operation == "t":
         CVimg.setTemplateImage()
     elif operation == "s":

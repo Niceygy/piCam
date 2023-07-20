@@ -3,6 +3,10 @@ import cv2
 
 
 def cropImage(left, top, bottom, right, imgPath):
+    """Crops an image
+    INPUTS: Left, Top Bottom & Right are the coords for the crop,
+    imgPath is the path of the .png for it to crop
+    """
     im = Image.open(imgPath)
     im1 = im.crop((left, top, right, bottom))
     cv2.imwrite("tmp2.png", im1)

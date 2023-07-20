@@ -61,3 +61,4 @@ def syncDir():
         wget.download("http://192.168.1.158:8000/images/" + img, "images/" + img)
         print(" Loaded!")
     print("Complete!")
+

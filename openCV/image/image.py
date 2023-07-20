@@ -53,15 +53,21 @@ def compare(template, image, findBoard=False):
     if findBoard != False:
         Warr = []
         Harr = []
-        cv2.imwrite(str(time.time()) + ".png", second)  # saves image with date as name
+        Yarr = []
+        Xarr = []
+        cv2.imwrite("tmp/hall00.png", second)  # saves image with date as name
         for i in contours:
             area = cv2.contourArea(i)
             if area > 100:
                 x, y, w, h = cv2.boundingRect(i)
                 Warr.append(w)
                 Harr.append(h)
+                Xarr.append(x)
+                Yarr.append(y)
         h, w = FB.removeFalseAlerts(Warr, Harr)
+        x, y = FB.removeFalseAlerts(Xarr, Yarr)
         print(str(h) + " " + str(w))
+        FB.cropImage(x, h, w, y, "tmp/hall00.png")
 
     else:
         cv2.imshow("Image comparison - PiCam", second)
@@ -105,5 +111,5 @@ def setTemplateImage():
     sleep(1)
     print("Using current camera feed. Taking image in 2 seconds", end="\r")
     sleep(1)
-    print("Using current camera feed. Taking image in 1 second")
+    print("Using current camera feed. Taking image in 1 second ")
     takeTemplateImage(name)
