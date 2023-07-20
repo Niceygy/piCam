@@ -15,7 +15,7 @@ def main():
     if operation == "c":
         name = input("Specify an image name: ")
         image = CVimg.takeComparisonImage(name)
-        sleep(1)
+        # sleep(1)
         print("Select image to compare against ")
         dir = os.listdir("C://Users//Oliver//Downloads//picam//templates")
         print(dir)
@@ -36,7 +36,16 @@ def main():
     elif operation == "s":
         func.syncDir()
     elif operation == "f":
-        print("s")
+        print("What board/part would you like to find? ")
+        lookingFor = input(" ")
+        print("Specify an image name: ")
+        imageName = input(" ")
+        image = CVimg.takeComparisonImage(imageName)
+        print("Select image to compare against ")
+        dir = os.listdir("C://Users//Oliver//Downloads//picam//templates")
+        print(dir)
+        template = input(" ")
+        CVimg.compare(template, image)
 
 
 main()
