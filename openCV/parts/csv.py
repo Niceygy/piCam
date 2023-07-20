@@ -31,4 +31,4 @@ def getParts():
 
 def addPart(partName, imageName):
     with open(filename, "w+") as file:
-        file.write(partName + "," + imageName)
+        file.write(partName + "-" + imageName + "\n")
