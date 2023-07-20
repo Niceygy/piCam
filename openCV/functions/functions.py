@@ -3,6 +3,7 @@ import subprocess
 import requests
 import wget
 import functions.image as image
+import parts.csv as csv
 
 
 def run(cmd):
@@ -58,4 +59,5 @@ def addNewPart():
         "Please put the part under the camera.\n Ideally as clear and large as possible"
     )
     input("Press Enter to continue ")
-    image.takeComparisonImage(name, "/openCV/csv")
+    imageName = image.takeComparisonImage(name, "/openCV/csv")
+    csv.addPart(name, imageName)
