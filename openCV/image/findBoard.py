@@ -8,8 +8,10 @@ def cropImage(left, top, bottom, right, imgCV):
     imgPath is the path of the .png for it to crop
     """
     im = imgCV  # Image.open("C:/Users/Oliver/Downloads/picam/" + imgPath)
-    im1 = im.crop((left, top, right, bottom))
-    cv2.imwrite("tmp2.png", im1)
+    # im1 = im.crop((left, top, right, bottom))
+    croppedImage = im[left : left + top, right : right + bottom]
+    cv2.imwrite("tmp2.png", croppedImage)
+    cv2.waitKey(0)
 
 
 def removeFalseAlerts(Warr, Harr):  # Width array, Height array
@@ -30,4 +32,5 @@ def removeFalseAlerts(Warr, Harr):  # Width array, Height array
         else:
             num = num + 1
             print("Removed " + str(num) + " invalid selections  ", end="\r")
+    print("Removed " + str(num) + "invalid selections total!  ")
     return [boardH, boardW]

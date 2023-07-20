@@ -41,6 +41,7 @@ def compare(template, image, findBoard=False):
     mask = np.zeros(first.shape, dtype="uint8")
     filled = second.copy()
 
+    logNum = 0
     for c in contours:
         area = cv2.contourArea(c)
         if area > 100:
@@ -48,9 +49,9 @@ def compare(template, image, findBoard=False):
 
             cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
             cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
-            print(
-                "W,X,Y,H = " + str(w) + " " + str(x) + " " + str(y) + " " + str(h) + " "
-            )
+            # print(
+            #     "W,X,Y,H = " + str(w) + " " + str(x) + " " + str(y) + " " + str(h) + " "
+            # )
             cv2.drawContours(mask, [c], 0, (0, 255, 0), -1)
             cv2.drawContours(filled, [c], 0, (0, 255, 0), -1)
 
