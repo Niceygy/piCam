@@ -1,4 +1,5 @@
 from time import sleep
+import time
 import cv2
 import functions as func
 
@@ -9,7 +10,7 @@ import numpy as np
 from skimage.metrics import structural_similarity  # type: ignore
 
 
-def compare(template, image):
+def compare(template, image, save=False):
     first = cv2.imread(image)
     second = cv2.imread(template)
 
@@ -40,13 +41,16 @@ def compare(template, image):
         area = cv2.contourArea(c)
         if area > 100:
             x, y, w, h = cv2.boundingRect(c)
-            cv2.rectangle(first, (x, y), (x + w, y + h), (36,255,12), 2)
-            cv2.rectangle(second, (x, y), (x + w, y + h), (36, 255, 12), 2)
+            cv2.rectangle(first, (x, y), (x + w, y + h), (0,115,115), 5)
+            cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
+            print("W,X,Y,H = "+w+" "+x+" "+y+" "+h+" ")
             cv2.drawContours(mask, [c], 0, (0,255,0), -1)
             cv2.drawContours(filled, [c], 0, (0,255,0), -1)
-    cv2.imshow("Image comparison - PiCam", second)
-    cv2.waitKey()    
-    #sleep(10)
+    if save != False:
+        cv2.imwrite(str(time.time())+".png", second) #saves image with date as name
+    else:
+        cv2.imshow("Image comparison - PiCam", second)
+        cv2.waitKey()
     return score * 100
 
 def getCompareScore(template, image):

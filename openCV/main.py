@@ -1,6 +1,6 @@
 print("Loading....")
 import functions as func
-import image as CVimg
+import openCV.image.image as CVimg
 from time import sleep
 import os
 

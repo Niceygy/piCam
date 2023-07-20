@@ -1,4 +1,4 @@
-import image as img
+import openCV.image.image as img
 import functions as func
 import os
 
