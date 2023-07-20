@@ -1,6 +1,7 @@
 from time import sleep
 import time
 import cv2
+import findBoard as FB
 #import functions as func
 
 #############################REPLACE ME!!!!###############################################
@@ -10,7 +11,7 @@ import numpy as np
 from skimage.metrics import structural_similarity  # type: ignore
 
 
-def compare(template, image, save=False):
+def compare(template, image, findBoard=False):
     first = cv2.imread(image)
     second = cv2.imread(template)
 
@@ -46,8 +47,23 @@ def compare(template, image, save=False):
             print("W,X,Y,H = "+str(w)+" "+str(x)+" "+str(y)+" "+str(h)+" ")
             cv2.drawContours(mask, [c], 0, (0,255,0), -1)
             cv2.drawContours(filled, [c], 0, (0,255,0), -1)
-    if save != False:
+        
+
+    if findBoard != False:
+        Warr = []
+        Harr = []
         cv2.imwrite(str(time.time())+".png", second) #saves image with date as name
+        for i in contours:
+            area = cv2.contourArea(i)
+            if area > 100:
+                x, y, w, h = cv2.boundingRect(i)
+                Warr.append(w)
+                Harr.append(h)
+        h, w = FB.removeFalseAlerts(Warr, Harr)
+        print(str(h)+" "+str(w))
+
+
+            
     else:
         cv2.imshow("Image comparison - PiCam", second)
         cv2.waitKey()
