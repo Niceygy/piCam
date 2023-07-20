@@ -20,7 +20,7 @@ def removeFalseAlerts(Warr, Harr):  # Width array, Height array
     boardH = 0
     num = 0
     for i in Warr:
-        sleep(0.1)
+        sleep(0.05)
         if i > 25:
             # valid box probably
             boardW = i
@@ -28,7 +28,7 @@ def removeFalseAlerts(Warr, Harr):  # Width array, Height array
             num = num + 1
             print("Removed " + str(num) + " invalid selections (W) ", end="\r")
     for h in Harr:
-        sleep(0.1)
+        sleep(0.05)
         if h > 25:
             # valid box probably
             boardW = h
