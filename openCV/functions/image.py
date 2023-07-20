@@ -77,8 +77,6 @@ def compare(template, image, findBoard=False):
         cv2.imshow("Image comparison - PiCam2", second)
         cv2.waitKey(0)
 
-        # FB.cropImage(int(x), int(h), int(w), int(y), imageNumpy)
-
     else:
         cv2.imshow("Image comparison - PiCam", second)
         cv2.waitKey()
