@@ -45,12 +45,16 @@ def compare(template, image, findBoard=False):
 
             # remove small boxes associated with false alerts
             if x < 25:
+                print("Removed error")
                 return
             if y < 25:
+                print("Removed error")
                 return
             if w < 25:
+                print("Removed error")
                 return
             if h < 25:
+                print("Removed error")
                 return
             cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
             cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
