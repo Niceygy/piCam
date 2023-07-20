@@ -40,9 +40,10 @@ def main():
         dir = os.listdir("C://Users//Oliver//Downloads//picam//templates")
         print(dir)
         lookingFor = input(" ")
+        lookingFor = "C:\\Users\\Oliver\\Downloads\\picam\\templates" + lookingFor
         print("Specify an image name: ")
         imageName = input(" ")
-        image = CVimg.takeComparisonImage(imageName)
+        image = CVimg.takeComparisonImage(imageName)  # just taken
         CVimg.compare(lookingFor, image)
 
 
