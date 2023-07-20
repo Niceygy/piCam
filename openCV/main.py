@@ -44,7 +44,7 @@ def main():
         print("Specify an image name: ")
         imageName = input(" ")
         image = CVimg.takeComparisonImage(imageName)  # just taken
-        CVimg.compare(lookingFor, image)
+        CVimg.findImageInImage(lookingFor, image, imageName + "-picam")
 
 
 main()
