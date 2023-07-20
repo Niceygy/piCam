@@ -31,5 +31,5 @@ def listAllParts():
     with open(filename, "r") as r:
         line = r.read()
         for i in r:
-            res.append(r)
+            res.append(i)
     return res
