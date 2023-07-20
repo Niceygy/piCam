@@ -74,7 +74,10 @@ def compare(template, image, findBoard=False):
         x, y = FB.removeFalseAlerts(Xarr, Yarr)
         print(str(h) + " " + str(w))
         imageNumpy = cv2.imread("tmp/" + timeName + ".png")
-        FB.cropImage(int(x), int(h), int(w), int(y), imageNumpy)
+        cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
+        cv2.waitKey(0)
+
+        # FB.cropImage(int(x), int(h), int(w), int(y), imageNumpy)
 
     else:
         cv2.imshow("Image comparison - PiCam", second)
