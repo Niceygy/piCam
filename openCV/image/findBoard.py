@@ -2,12 +2,12 @@ from PIL import Image
 import cv2
 
 
-def cropImage(left, top, bottom, right, imgPath):
+def cropImage(left, top, bottom, right, imgCV):
     """Crops an image
     INPUTS: Left, Top Bottom & Right are the coords for the crop,
     imgPath is the path of the .png for it to crop
     """
-    im = Image.open("C:/Users/Oliver/Downloads/picam/" + imgPath)
+    im = imgCV  # Image.open("C:/Users/Oliver/Downloads/picam/" + imgPath)
     im1 = im.crop((left, top, right, bottom))
     cv2.imwrite("tmp2.png", im1)
 
