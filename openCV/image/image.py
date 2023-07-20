@@ -103,7 +103,7 @@ def getCompareScore(template, image):
 def findImageInImage(lookingFor, lookingIn, name):
     img_rgb = cv2.imread(lookingIn)
     template = cv2.imread(lookingFor)
-    w, h = template.shape[:-1]
+    w, h = template.shape[::-1]
 
     res = cv2.matchTemplate(img_rgb, template, cv2.TM_CCOEFF_NORMED)
     threshold = 0.8
