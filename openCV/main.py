@@ -31,11 +31,13 @@ def main():
             CVimg.compare(image, template, True)
         else:
             CVimg.compare(image, template)
-
+        main()
     elif operation == "t":
         CVimg.setTemplateImage()
+        main()
     elif operation == "s":
         func.syncDir()
+        main()
     elif operation == "f":
         print("What board/part would you like to find? ")
         dir = os.listdir("C://Users//Oliver//Downloads//picam//templates")
@@ -46,8 +48,12 @@ def main():
         imageName = input(" ")
         image = CVimg.takeComparisonImage(imageName)  # just taken
         CVimg.findImageInImage(lookingFor, image, imageName)
+        main()
     elif operation == "a":
         func.addNewPart()
+        main()
+    elif operation == "q":
+        return
     else:
         print("Invalid option")
         main()
