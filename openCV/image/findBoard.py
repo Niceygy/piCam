@@ -22,12 +22,12 @@ def removeFalseAlerts(Warr, Harr):  # Width array, Height array
             boardW = i
         else:
             num = num + 1
-            print("Removed " + str(num) + " invalid selections")
+            print("Removed " + str(num) + " invalid selections  ", end="\r")
     for h in Harr:
         if h > 25:
             # valid box probably
             boardW = h
         else:
             num = num + 1
-            print("Removed " + str(num) + " invalid selections")
+            print("Removed " + str(num) + " invalid selections  ", end="\r")
     return [boardH, boardW]
