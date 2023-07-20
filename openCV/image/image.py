@@ -43,7 +43,7 @@ def compare(template, image, save=False):
             x, y, w, h = cv2.boundingRect(c)
             cv2.rectangle(first, (x, y), (x + w, y + h), (0,115,115), 5)
             cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
-            print("W,X,Y,H = "+w+" "+x+" "+y+" "+h+" ")
+            print("W,X,Y,H = "+str(w)+" "+str(x)+" "+str(y)+" "+str(h)+" ")
             cv2.drawContours(mask, [c], 0, (0,255,0), -1)
             cv2.drawContours(filled, [c], 0, (0,255,0), -1)
     if save != False:
