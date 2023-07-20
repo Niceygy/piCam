@@ -25,7 +25,7 @@ This is handled automatically! You`re welcome
 3. Replace the IP in openCV/image.py with your IP. Leave the "tcp://" and the ":33" alone
 4. Start the app with `python3 openCV/main.py`
 
-look for image within image
+<!-- look for image within image
 return top left and bottom right coords
 crop image
-compare against golden sample
+compare against golden sample -->

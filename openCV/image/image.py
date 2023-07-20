@@ -42,6 +42,16 @@ def compare(template, image, findBoard=False):
         area = cv2.contourArea(c)
         if area > 100:
             x, y, w, h = cv2.boundingRect(c)
+
+            # remove small boxes associated with false alerts
+            if x < 25:
+                return
+            if y < 25:
+                return
+            if w < 25:
+                return
+            if h < 25:
+                return
             cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
             cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
             print(
