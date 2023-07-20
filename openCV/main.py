@@ -19,11 +19,11 @@ class color:
 
 def main():
     print("Select operation: ")
-    print(color.BOLD + "C" + color.END + "ompare images ")
-    print("Take a new " + color.BOLD + "T" + color.END + "emplate image ")
-    print(color.BOLD + "S" + color.END + "ync from the camera ")
-    print(color.BOLD + "F" + color.END + "ind a part in an image or ")
-    print(color.BOLD + "A" + color.END + "dd a new part ")
+    print("C. Compare images ")
+    print("T. Take a new Template image ")
+    print("S. Sync from the camera ")
+    print("F. Find a part in an image or ")
+    print("A. Add a new part ")
     operation = input("C/T/S/F ")
     operation = operation.lower()
     if operation == "c":
