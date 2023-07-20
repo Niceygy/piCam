@@ -112,7 +112,9 @@ def findImageInImage(lookingFor, lookingIn, name):
     for pt in zip(*loc[::-1]):
         cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0, 0, 255), 2)  # type: ignore
 
-    cv2.imwrite(name + "-picam.png", img_rgb)
+    cv2.imwrite("output/" + name + "-picam.png", img_rgb)
+    cv2.imshow("Image comparison - PiCam", img_rgb)
+    cv2.waitKey(0)
 
 
 def takeComparisonImage(i):
