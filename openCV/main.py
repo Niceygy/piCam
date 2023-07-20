@@ -2,6 +2,7 @@ print("Loading....")
 import functions.functions as func
 import functions.image as CVimg
 import os
+import parts.csv as csv
 
 
 def main():
@@ -52,6 +53,8 @@ def main():
     elif operation == "a":
         func.addNewPart()
         main()
+    elif operation == "l":
+        print(str(csv.listAllParts()))
     elif operation == "q":
         return
     else:

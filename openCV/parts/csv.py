@@ -24,3 +24,12 @@ def getParts():
 def addPart(partName, imageName):
     with open(filename, "w+") as file:
         file.write(partName + "-" + imageName + "\n")
+
+
+def listAllParts():
+    res = []
+    with open(filename, "r") as r:
+        line = r.read()
+        for i in r:
+            res.append(r)
+    return res
