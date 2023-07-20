@@ -75,6 +75,7 @@ def compare(template, image, findBoard=False):
         print(str(h) + " " + str(w))
         imageNumpy = cv2.imread("tmp/" + timeName + ".png")
         cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
+        cv2.imshow("Image comparison - PiCam", second)
         cv2.waitKey(0)
 
         # FB.cropImage(int(x), int(h), int(w), int(y), imageNumpy)
