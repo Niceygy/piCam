@@ -1,8 +1,7 @@
 from time import sleep
 import time
 import cv2
-import board as board
-import image.findBoard as FB
+import functions.findBoard as FB
 import numpy as np
 from skimage.metrics import structural_similarity  # type: ignore
 
@@ -117,11 +116,11 @@ def findImageInImage(lookingFor, lookingIn, name):
     cv2.waitKey(0)
 
 
-def takeComparisonImage(i):
+def takeComparisonImage(name, location="images/"):
     return_value, image = camera.read()
-    cv2.imwrite("images/" + str(i) + ".png", image)
-    print("Saved image as " + str(i) + ".png")
-    res = "images/" + str(i) + ".png"
+    cv2.imwrite(str(location) + str(name) + ".png", image)
+    print("Saved image as " + str(name) + ".png")
+    res = "images/" + str(name) + ".png"
     return res
 
 

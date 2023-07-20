@@ -1,6 +1,4 @@
-from PIL import Image
 import cv2
-from time import sleep
 
 
 def cropImage(left, top, bottom, right, imgCV):

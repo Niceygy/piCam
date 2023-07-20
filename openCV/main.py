@@ -1,8 +1,6 @@
 print("Loading....")
-import functions as func
-import image.image as CVimg
-import image.findBoard as FB
-from time import sleep
+import functions.functions as func
+import openCV.functions.image as CVimg
 import os
 
 

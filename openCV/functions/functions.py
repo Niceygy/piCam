@@ -2,23 +2,12 @@ from time import sleep
 import subprocess
 import requests
 import wget
+import functions.image as image
 
 
 def run(cmd):
     runCmd = "bash -c " + cmd
     return subprocess.run(runCmd, shell=True)
-
-
-def dateTime():
-    unixtime = run("date +%s")
-    res = str(unixtime)
-    return res
-
-
-def listDir(dir):
-    res = run("ls " + dir)
-    res = str(res)
-    return res
 
 
 def syncDir():
@@ -50,7 +39,7 @@ def syncDir():
         k = str(k)  # leaves us with 1689763487.jpg
         num = num + 1
         print("Validated " + str(num) + "/" + str(totalNum), end="\r")
-        sleep(0.1)
+        sleep(0.1)  # to prevent buffer issues
         imageNames.append(k)
     print("All images validated!")
     x = 0
@@ -62,3 +51,11 @@ def syncDir():
         print(" Loaded!")
     print("Complete!")
 
+
+def addNewPart():
+    name = input("Name the part you want to add: ")
+    print(
+        "Please put the part under the camera.\n Ideally as clear and large as possible"
+    )
+    input("Press Enter to continue ")
+    image.takeComparisonImage(name, "/openCV/csv")

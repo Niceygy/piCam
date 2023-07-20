@@ -7,18 +7,6 @@ from signal import pause
 import ledControl as LEDcontrol
 import cameraControl as CameraControl
 
-# def checkForLightsToggle():
-#     LTbutton = Button(17)
-#     LTbutton.when_pressed = LEDcontrol.LEDtoggle
-#     pause()
-
-
-# def checkForLightsMove():
-#     LMbutton = Button(22)
-#     print("CheckForLightsMove function running...")
-#     LMbutton.when_pressed = LEDcontrol.rotateLED
-#     pause()
-
 
 def handleButtons():
     LMbutton = Button(22)  # Light Move

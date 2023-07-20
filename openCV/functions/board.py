@@ -1,4 +1,4 @@
-import image.image as img
+import functions.image as img
 
 # import functions as func
 import os
