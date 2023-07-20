@@ -1,5 +1,6 @@
 from PIL import Image
 import cv2
+from time import sleep
 
 
 def cropImage(left, top, bottom, right, imgCV):
@@ -19,6 +20,7 @@ def removeFalseAlerts(Warr, Harr):  # Width array, Height array
     boardH = 0
     num = 0
     for i in Warr:
+        sleep(0.1)
         if i > 25:
             # valid box probably
             boardW = i
@@ -26,11 +28,12 @@ def removeFalseAlerts(Warr, Harr):  # Width array, Height array
             num = num + 1
             print("Removed " + str(num) + " invalid selections  ", end="\r")
     for h in Harr:
+        sleep(0.1)
         if h > 25:
             # valid box probably
             boardW = h
         else:
             num = num + 1
             print("Removed " + str(num) + " invalid selections  ", end="\r")
-    print("Removed " + str(num) + "invalid selections total!  ")
+    print("Removed " + str(num) + " invalid selections total!  ")
     return [boardH, boardW]
