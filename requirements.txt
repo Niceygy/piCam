@@ -1,3 +1,4 @@
+altgraph==0.17.3
 certifi==2023.5.7
 charset-normalizer==3.2.0
 idna==3.4
@@ -9,8 +10,12 @@ opencv-contrib-python==4.8.0.74
 opencv-python==4.8.0.74
 opencv-python-headless==4.8.0.74
 packaging==23.1
+pefile==2023.2.7
 Pillow==10.0.0
+pyinstaller==5.13.0
+pyinstaller-hooks-contrib==2023.5
 PyWavelets==1.4.1
+pywin32-ctypes==0.2.2
 requests==2.31.0
 scikit-image==0.21.0
 scipy==1.11.1
