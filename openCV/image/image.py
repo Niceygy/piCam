@@ -102,5 +102,5 @@ def setTemplateImage():
     sleep(1)
     print("Using current camera feed. Taking image in 2 seconds", end="\r")
     sleep(1)
-    print("Using current camera feed. Taking image in 1 second", end="\r")
+    print("Using current camera feed. Taking image in 1 second")
     takeTemplateImage(name)
