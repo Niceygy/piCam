@@ -21,20 +21,14 @@ def getNumOfParts():
 
 
 def getParts():
+    res = []
     with open(filename, "r") as csvfile:
-        csvreader = csv.reader(csvfile)
-        fields = next(csvreader)
-        for row in csvreader:
-            row = str(row)
-            row.split(",")
-            parts.append(row[0] + "-" + row[1])  # adds partname-partImage to array
-    return parts
+        line = csvfile.read()
+        for i in line:
+            res.append(i)
+    return res
 
 
 def addPart(partName, imageName):
-    dataToFile = [str(partName), str(imageName)]
-    with open(filename, "w") as csvfile:
-        # creating a csv writer object
-        csvwriter = csv.writer(csvfile)
-        # writing the data rows
-        csvwriter.writerows(dataToFile)
+    with open(filename, "w+") as file:
+        file.write(partName + "," + imageName)
