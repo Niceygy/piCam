@@ -99,9 +99,9 @@ def takeTemplateImage(i):
 
 def setTemplateImage():
     name = input("Enter file name for the template: ")
-    print("Using current camera feed. Taking image in 3 seconds")
+    print("Using current camera feed. Taking image in 3 seconds", end="\r")
     sleep(1)
-    print("2")
+    print("Using current camera feed. Taking image in 2 seconds", end="\r")
     sleep(1)
-    print("1")
+    print("Using current camera feed. Taking image in 1 second", end="\r")
     takeTemplateImage(name)

@@ -1,11 +1,10 @@
 from PIL import Image
+import cv2
 
 def cropImage(left, top, bottom, right, imgPath):
     im = Image.open(imgPath)
     im1 = im.crop((left, top, right, bottom))
-    im1.show()
-
-
+    cv2.imwrite("tmp2.png", im1)
 
 def removeFalseAlerts(Warr, Harr): #Width array, Height array
     boardW = 0
