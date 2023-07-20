@@ -4,10 +4,26 @@ import functions.image as CVimg
 import os
 
 
+class color:
+    PURPLE = "\033[95m"
+    CYAN = "\033[96m"
+    DARKCYAN = "\033[36m"
+    BLUE = "\033[94m"
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    RED = "\033[91m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
+    END = "\033[0m"
+
+
 def main():
-    print(
-        "Compare an image, take a Template image, Sync files from camera or Find board?"
-    )
+    print("Select operation: ")
+    print(color.BOLD + "C" + color.END + "ompare images ")
+    print("Take a new " + color.BOLD + "T" + color.END + "emplate image ")
+    print(color.BOLD + "S" + color.END + "ync from the camera ")
+    print(color.BOLD + "F" + color.END + "ind a part in an image or ")
+    print(color.BOLD + "A" + color.END + "dd a new part ")
     operation = input("C/T/S/F ")
     operation = operation.lower()
     if operation == "c":
@@ -43,6 +59,11 @@ def main():
         imageName = input(" ")
         image = CVimg.takeComparisonImage(imageName)  # just taken
         CVimg.findImageInImage(lookingFor, image, imageName)
+    elif operation == "a":
+        func.addNewPart()
+    else:
+        print("Invalid option")
+        main()
 
 
 main()
