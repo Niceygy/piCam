@@ -15,3 +15,20 @@ def findBoard():
     else:
         print("Board not found, please try again")
         return
+
+
+def removeErrors(a, b, c, d):
+    if a < 25:
+        print("Removed error")
+        return
+    if b < 25:
+        print("Removed error")
+        return
+    if c < 25:
+        print("Removed error")
+        return
+    if d < 25:
+        print("Removed error")
+        return
+    else:
+        return [a, b, c, d]

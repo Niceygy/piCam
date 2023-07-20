@@ -1,6 +1,7 @@
 from time import sleep
 import time
 import cv2
+import board as board
 import image.findBoard as FB
 import numpy as np
 from skimage.metrics import structural_similarity  # type: ignore
@@ -43,42 +44,21 @@ def compare(template, image, findBoard=False):
         if area > 100:
             x, y, w, h = cv2.boundingRect(c)
 
-            # remove small boxes associated with false alerts
-            if x < 25:
-                print("Removed error")
-                return
-            elif y < 25:
-                print("Removed error")
-                return
-            elif w < 25:
-                print("Removed error")
-                return
-            elif h < 25:
-                print("Removed error")
-                return
-            else:
-                cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
-                cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
-                print(
-                    "W,X,Y,H = "
-                    + str(w)
-                    + " "
-                    + str(x)
-                    + " "
-                    + str(y)
-                    + " "
-                    + str(h)
-                    + " "
-                )
-                cv2.drawContours(mask, [c], 0, (0, 255, 0), -1)
-                cv2.drawContours(filled, [c], 0, (0, 255, 0), -1)
+            cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
+            cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
+            print(
+                "W,X,Y,H = " + str(w) + " " + str(x) + " " + str(y) + " " + str(h) + " "
+            )
+            cv2.drawContours(mask, [c], 0, (0, 255, 0), -1)
+            cv2.drawContours(filled, [c], 0, (0, 255, 0), -1)
 
     if findBoard != False:
+        print("test")
         Warr = []
         Harr = []
         Yarr = []
         Xarr = []
-        cv2.imwrite("tmp/hall00.png", second)  # saves image with date as name
+        cv2.imwrite("tmp/hall10.png", second)  # saves image with date as name
         for i in contours:
             area = cv2.contourArea(i)
             if area > 100:
@@ -90,7 +70,7 @@ def compare(template, image, findBoard=False):
         h, w = FB.removeFalseAlerts(Warr, Harr)
         x, y = FB.removeFalseAlerts(Xarr, Yarr)
         print(str(h) + " " + str(w))
-        FB.cropImage(x, h, w, y, "tmp/hall00.png")
+        FB.cropImage(int(x), int(h), int(w), int(y), "tmp/hall10.png")
 
     else:
         cv2.imshow("Image comparison - PiCam", second)
