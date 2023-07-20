@@ -1,8 +1,8 @@
-import board
-import neopixel
+import board  # type: ignore
+import neopixel  # type: ignore
 
 pixels = neopixel.NeoPixel(board.D18, 16)  # assign GPIO 18 for 16 LEDs
-LEDcount = range(15)  # 0 through 15
+LEDcount = range(16)  # 0 through 16
 global LEDrotate
 LEDrotate = 0
 global LEDtoggleStatus
