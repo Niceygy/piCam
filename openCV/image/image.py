@@ -102,16 +102,17 @@ def getCompareScore(template, image):
 
 def findImageInImage(lookingFor, lookingIn, name):
     img_rgb = cv2.imread(lookingIn)
-    template = cv2.imread(lookingFor)
+    img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
+    template = cv2.imread(lookingFor, 0)
     w, h = template.shape[::-1]
 
-    res = cv2.matchTemplate(img_rgb, template, cv2.TM_CCOEFF_NORMED)
+    res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
     threshold = 0.8
     loc = np.where(res >= threshold)
-    for pt in zip(*loc[::-1]):  # Switch columns and rows
+    for pt in zip(*loc[::-1]):
         cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0, 0, 255), 2)  # type: ignore
 
-    cv2.imwrite(name + ".png", img_rgb)
+    cv2.imwrite(name + "-picam.png", img_rgb)
 
 
 def takeComparisonImage(i):
