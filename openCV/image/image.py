@@ -6,6 +6,8 @@ import image.findBoard as FB
 import numpy as np
 from skimage.metrics import structural_similarity  # type: ignore
 
+timeName = str(time.time())
+
 
 #############################REPLACE ME!!!!###############################################
 camera = cv2.VideoCapture("tcp://192.168.1.158:33")  # type: ignore #listen to the tcp video stream from the PI
@@ -58,7 +60,7 @@ def compare(template, image, findBoard=False):
         Harr = []
         Yarr = []
         Xarr = []
-        cv2.imwrite("tmp/hall10.png", second)  # saves image with date as name
+        cv2.imwrite("tmp/" + timeName + ".png", second)  # saves image with date as name
         for i in contours:
             area = cv2.contourArea(i)
             if area > 100:
@@ -70,7 +72,8 @@ def compare(template, image, findBoard=False):
         h, w = FB.removeFalseAlerts(Warr, Harr)
         x, y = FB.removeFalseAlerts(Xarr, Yarr)
         print(str(h) + " " + str(w))
-        FB.cropImage(int(x), int(h), int(w), int(y), "tmp/hall10.png")
+        imageNumpy = cv2.imread("tmp/" + timeName + ".png")
+        FB.cropImage(int(x), int(h), int(w), int(y), imageNumpy)
 
     else:
         cv2.imshow("Image comparison - PiCam", second)
