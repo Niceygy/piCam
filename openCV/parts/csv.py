@@ -1,6 +1,6 @@
 import csv
 
-filename = "./parts/parts.csv"
+filename = "openCV/parts/parts.csv"
 
 fields = []
 rows = []
