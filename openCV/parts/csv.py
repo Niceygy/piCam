@@ -30,6 +30,6 @@ def listAllParts():
     res = []
     with open(filename, "r") as r:
         line = r.read()
-        for i in r:
+        for i in line:
             res.append(i)
     return res
