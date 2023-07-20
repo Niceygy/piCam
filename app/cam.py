@@ -1,3 +1,4 @@
-import cameraControl 
+import cameraControl
+
 while True:
-        cameraControl.run("/home/oliver/picam/app/cam.sh")
+    cameraControl.run("/home/oliver/picam/app/cam.sh")

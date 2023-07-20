@@ -6,7 +6,9 @@ import os
 
 
 def main():
-    print("Compare an image, take a Template image, Sync files from camera or Find board?")
+    print(
+        "Compare an image, take a Template image, Sync files from camera or Find board?"
+    )
     operation = input("C/T/S/F ")
     operation = operation.lower()
     if operation == "c":
@@ -28,4 +30,3 @@ def main():
 
 
 main()
-

@@ -1,6 +1,8 @@
 import image.image as img
-import functions as func
+
+# import functions as func
 import os
+
 
 def findBoard():
     os.listdir("C://Users//Oliver//Downloads/picam//templates")
@@ -13,4 +15,3 @@ def findBoard():
     else:
         print("Board not found, please try again")
         return
-    

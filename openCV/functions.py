@@ -34,9 +34,9 @@ def syncDir():
         if ".jpg" in i:
             validImages.append(i)
             n = n + 1
-            print("Found "+str(n)+" images", end="\r")
+            print("Found " + str(n) + " images", end="\r")
             sleep(0.1)
-    print("Found "+str(n)+" images.")
+    print("Found " + str(n) + " images.")
     imageNames = []
     num = 0
     totalNum = len(validImages)
@@ -57,7 +57,7 @@ def syncDir():
     for img in imageNames:
         # res = requests.get("http://192.168.1.158:8000/images/"+img)
         x = x + 1
-        print("Loading " + img + " onto disk ("+str(x)+"/"+str(num)+")")
+        print("Loading " + img + " onto disk (" + str(x) + "/" + str(num) + ")")
         wget.download("http://192.168.1.158:8000/images/" + img, "images/" + img)
         print(" Loaded!")
     print("Complete!")

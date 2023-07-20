@@ -10,6 +10,7 @@ from skimage.metrics import structural_similarity  # type: ignore
 camera = cv2.VideoCapture("tcp://192.168.1.158:33")  # type: ignore #listen to the tcp video stream from the PI
 print("Connected!")
 
+
 def compare(template, image, findBoard=False):
     first = cv2.imread(image)
     second = cv2.imread(template)
@@ -34,24 +35,25 @@ def compare(template, image, findBoard=False):
     contours = contours[0] if len(contours) == 2 else contours[1]
 
     # Highlight differences
-    mask = np.zeros(first.shape, dtype='uint8')
+    mask = np.zeros(first.shape, dtype="uint8")
     filled = second.copy()
 
     for c in contours:
         area = cv2.contourArea(c)
         if area > 100:
             x, y, w, h = cv2.boundingRect(c)
-            cv2.rectangle(first, (x, y), (x + w, y + h), (0,115,115), 5)
+            cv2.rectangle(first, (x, y), (x + w, y + h), (0, 115, 115), 5)
             cv2.rectangle(second, (x, y), (x + w, y + h), (0, 115, 115), 5)
-            print("W,X,Y,H = "+str(w)+" "+str(x)+" "+str(y)+" "+str(h)+" ")
-            cv2.drawContours(mask, [c], 0, (0,255,0), -1)
-            cv2.drawContours(filled, [c], 0, (0,255,0), -1)
-        
+            print(
+                "W,X,Y,H = " + str(w) + " " + str(x) + " " + str(y) + " " + str(h) + " "
+            )
+            cv2.drawContours(mask, [c], 0, (0, 255, 0), -1)
+            cv2.drawContours(filled, [c], 0, (0, 255, 0), -1)
 
     if findBoard != False:
         Warr = []
         Harr = []
-        cv2.imwrite(str(time.time())+".png", second) #saves image with date as name
+        cv2.imwrite(str(time.time()) + ".png", second)  # saves image with date as name
         for i in contours:
             area = cv2.contourArea(i)
             if area > 100:
@@ -59,14 +61,13 @@ def compare(template, image, findBoard=False):
                 Warr.append(w)
                 Harr.append(h)
         h, w = FB.removeFalseAlerts(Warr, Harr)
-        print(str(h)+" "+str(w))
+        print(str(h) + " " + str(w))
 
-
-            
     else:
         cv2.imshow("Image comparison - PiCam", second)
         cv2.waitKey()
     return score * 100
+
 
 def getCompareScore(template, image):
     first = cv2.imread(image)
@@ -78,23 +79,25 @@ def getCompareScore(template, image):
 
     # Compute SSIM between two images
     score, diff = structural_similarity(first_gray, second_gray, full=True)
-    #print("Similarity Score: {:.3f}%".format(score * 100))
+    # print("Similarity Score: {:.3f}%".format(score * 100))
     return score * 100
 
 
 def takeComparisonImage(i):
     return_value, image = camera.read()
-    cv2.imwrite("images/"+str(i) + ".png", image)
+    cv2.imwrite("images/" + str(i) + ".png", image)
     print("Saved image as " + str(i) + ".png")
     res = "images/" + str(i) + ".png"
     return res
 
+
 def takeTemplateImage(i):
     return_value, image = camera.read()
-    cv2.imwrite("templates/"+str(i) + ".png", image)
+    cv2.imwrite("templates/" + str(i) + ".png", image)
     print("Saved image as " + str(i) + ".png")
     res = "image" + str(i) + ".png"
     return res
+
 
 def setTemplateImage():
     name = input("Enter file name for the template: ")

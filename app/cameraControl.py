@@ -1,22 +1,29 @@
-import subprocess #camera only works with leagcy shell commands
+import subprocess  # camera only works with leagcy shell commands
 from time import sleep
 import time
+
 
 def user():
     return "oliver"
 
-imageDir = "/home/" + user() + "/picam/images/" # e.g: user "test" would have a dir of /home/test/picam/
+
+imageDir = (
+    "/home/" + user() + "/picam/images/"
+)  # e.g: user "test" would have a dir of /home/test/picam/
+
 
 def run(cmd):
     runCmd = "bash -c " + cmd
     return subprocess.run(runCmd, shell=True)
+
 
 def dateTime():
     unixtime = run("date +%s")
     res = str(unixtime)
     return res
 
-def takePhoto(): 
+
+def takePhoto():
     nowArr = str(time.time())
     nowArr = nowArr.split(".")
     now = nowArr[0]
@@ -24,6 +31,7 @@ def takePhoto():
     file = imageDir + fileName
     run("raspistill --focus -t 1 -o - >> " + file)
     print("Captured image " + fileName + " to /home/" + user() + "/picam/images")
+
 
 # def photoEverySec(seconds, number):
 #     if (int(number) / int(number) != 0):
@@ -34,9 +42,11 @@ def takePhoto():
 #         takePhoto()
 #         sleep(int(seconds))
 
+
 def liveCam():
-        print("raspivid --focus -t 0")
-        run("./app/cam.sh")
+    print("raspivid --focus -t 0")
+    run("./app/cam.sh")
+
 
 def video(time=10):
     time = int(time)
