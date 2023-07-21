@@ -62,3 +62,7 @@ The Pi will then highlight all the matches to that part that it can find, up to 
 
 This is broken at the moment, so don`t use it.<br>
 See https://git.niceygylive.xyz/Niceygy/PiCam/issues/1 for more
+
+# Any issues?
+
+Open a issue! I`ll get back to you as soon as I can
