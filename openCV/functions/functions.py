@@ -59,5 +59,5 @@ def addNewPart():
         "Please put the part under the camera.\n Ideally as clear and large as possible"
     )
     input("Press Enter to continue ")
-    imageName = image.takeComparisonImage(name, "/openCV/csv")
+    imageName = image.takeComparisonImage(name, "templates/")
     csv.addPart(name, imageName)
