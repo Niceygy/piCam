@@ -28,6 +28,7 @@ def addPart(partName, imageName):
 
 
 def listAllParts():
+    print("Listing all parts...")
     res = ""
     with open(filename, "r") as r:
         line = r.read()
