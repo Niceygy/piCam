@@ -28,11 +28,12 @@ def addPart(partName, imageName):
 
 
 def listAllParts():
-    res = []
+    res = ""
     with open(filename, "r") as r:
         line = r.read()
         for i in line:
-            res.append(i)
+            i = i.split("%")
+            res = res + ", " + str(i[0])
     return res
 
 
