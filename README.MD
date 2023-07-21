@@ -1,8 +1,8 @@
-### PiCam
+# PiCam
 
 ## Camera Module
 
-# Installation
+### Installation
 
 1. Clone the repo to your home directory, under "picam"
 2. Install python3, git and wget with `apt update -y && apt install python3 git wget`
@@ -12,13 +12,13 @@
    `@weekly cd /home/USER/picam && git pull --force`
 5. Reboot your PI
 
-# Updating
+### Updating
 
 This is handled automatically! You`re welcome
 
 ## PC App
 
-# Installation
+### Installation
 
 1. Clone the repo to your PC.
 2. Get the IP of your PI
@@ -29,3 +29,15 @@ This is handled automatically! You`re welcome
 return top left and bottom right coords
 crop image
 compare against golden sample -->
+
+## Usage
+
+### 1. Board comparison:
+
+By using the <b>T</b>ake template function, you can take an image of the "golden sample" you want all boards to be like. Then, using the <b>C</b>ompare images function, you can check for diffrences between the "golden sample" and your current board. WARNING! It will work better if it is alligned well, so I suggest using a clamp or vice to keep the boards in the same place from one to the next.
+
+### 2. LED Control
+
+There are three buttons, marked with a "+", a "-" and a backwards "c". The "-" button rotates the lit LEDs clockwise. Only three will be lit up at a time. <br>
+The backwards "c" button toggles all lights on/off. <br>
+The "-" button is currently broken, although is suppose to take an image. You can use the "Take a template image" function for now.

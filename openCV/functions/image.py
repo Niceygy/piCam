@@ -18,7 +18,7 @@ def load(time):
         sleep(0.2)
         print("Loading -  ", end="\r")
         sleep(0.2)
-        print("Loading \ ", end="\r")
+        print("Loading \ ", end="\r")  # type: ignore
         sleep(0.2)
         i = i + 0.8
     return
