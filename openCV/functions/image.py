@@ -26,7 +26,6 @@ def load(time):
 
 #############################REPLACE ME!!!!###############################################
 camera = cv2.VideoCapture("tcp://192.168.1.158:33")  # type: ignore #listen to the tcp video stream from the PI
-print("Connected!")
 load(2.4)
 
 
