@@ -1,6 +1,6 @@
-import csv
-
-filename = "openCV/parts/parts.csv"
+filename = (
+    "openCV/parts/parts.txt"  # using % instead of "," because python doeesnt like it
+)
 
 fields = []
 rows = []
