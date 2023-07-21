@@ -4,7 +4,7 @@
 
 ### Installation
 
-1. Clone the repo to your home directory, under "picam"
+1. Clone the repo to your home directory, under "picam" `git clone https://git.niceygylive.xyz/Niceygy/picam.git /home/$USER/picam`
 2. Install python3, git and wget with `apt update -y && apt install python3 git wget`
 3. Install requirements with `python3 -m pip install -r requirements.txt`
 4. Add the following to CRON (WARNING! This will make your PI only usable over SSH. Check that it is working beforehand!). Replace USER with your username
@@ -20,7 +20,7 @@ This is handled automatically! You`re welcome
 
 ### Installation
 
-1. Clone the repo to your PC.
+1. Clone the repo to your PC. `git clone https://git.niceygylive.xyz/Niceygy/picam.git C:/Users/%USERNAME%/Documents/picam`
 2. Get the IP of your PI
 3. Replace the IP in openCV/image.py with your IP. Leave the "tcp://" and the ":33" alone
 4. Start the app with `python3 openCV/main.py`
@@ -57,3 +57,8 @@ This part will then be added to `./openCV/parts/parts.txt`, and an image saved u
 <br>
 When <b>F</b>inding a part, make sure the entire board is visible and well lit up. Ideally use the same lighting for taking images of boards and parts.<br>
 The Pi will then highlight all the matches to that part that it can find, up to 256 instances.
+
+### 4. Syncing images
+
+This is broken at the moment, so don`t use it.<br>
+See https://git.niceygylive.xyz/Niceygy/PiCam/issues/1 for more
