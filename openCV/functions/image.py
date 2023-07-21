@@ -5,12 +5,29 @@ import functions.findBoard as FB
 import numpy as np
 from skimage.metrics import structural_similarity  # type: ignore
 
+
 timeName = str(time.time())
+
+
+def load(time):
+    i = 0
+    while int(time) > i:
+        print("Loading |    ", end="\r")
+        sleep(0.2)
+        print("Loading /   ", end="\r")
+        sleep(0.2)
+        print("Loading -  ", end="\r")
+        sleep(0.2)
+        print("Loading \ ", end="\r")
+        sleep(0.2)
+        i = i + 0.8
+    return
 
 
 #############################REPLACE ME!!!!###############################################
 camera = cv2.VideoCapture("tcp://192.168.1.158:33")  # type: ignore #listen to the tcp video stream from the PI
 print("Connected!")
+load(2.4)
 
 
 def compare(template, image, findBoard=False):

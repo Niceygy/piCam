@@ -1,11 +1,12 @@
-print("Loading....")
-import functions.functions as func
-import functions.image as CVimg
-import os
-import parts.csv as csv
+from time import sleep
 
 
 def main():
+    import functions.functions as func
+    import functions.image as CVimg
+    import os
+    import parts.csv as csv
+
     print("Select operation: ")
     print("C. Compare images ")
     print("T. Take a new Template image ")
