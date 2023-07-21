@@ -20,7 +20,7 @@ This is handled automatically! You`re welcome
 
 ### Installation
 
-1. Clone the repo to your PC. `git clone https://git.niceygylive.xyz/Niceygy/picam.git C:/Users/%USERNAME%/Documents/picam`
+1. Clone the repo to your PC. `curl https://packages.niceygylive.xyz/picam/install.sh | pwsh`
 2. Get the IP of your PI
 3. Replace the IP in openCV/image.py with your IP. Leave the "tcp://" and the ":33" alone
 4. Start the app with `python3 openCV/main.py`
@@ -51,7 +51,7 @@ The "-" button is currently broken, although is suppose to take an image. You ca
 
 ### 3. Managing parts
 
-You can either <b>F</b>ind parts on a board or <b>A</b> a part to the list that it can find.<br>
+You can either <b>F</b>ind parts on a board or <b>A</b>dd a part to the list that it can find.<br>
 When adding a part, make sure the camera can see the part and nothing else. If you need to, manually crop the image afterwards.
 This part will then be added to `./openCV/parts/parts.txt`, and an image saved under `./images/` <br>
 <br>
