@@ -41,4 +41,4 @@ def test():
     addPart(name, name + "-img.png")
 
 
-test()
+# test()
