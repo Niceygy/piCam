@@ -23,7 +23,8 @@ def getParts():
 
 def addPart(partName, imageName):
     with open(filename, "w+") as file:
-        file.write(partName + "-" + imageName + "\n")
+        file.write(partName + "%" + imageName + "\n")
+    return
 
 
 def listAllParts():
@@ -33,3 +34,11 @@ def listAllParts():
         for i in line:
             res.append(i)
     return res
+
+
+def test():
+    name = input()
+    addPart(name, name + "-img.png")
+
+
+test()

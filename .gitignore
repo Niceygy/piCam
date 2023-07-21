@@ -3,3 +3,4 @@
 *.old
 build
 dist
+openCV/parts/__pycache__/csv.cpython-310.pyc
