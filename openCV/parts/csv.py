@@ -22,7 +22,7 @@ def getParts():
 
 
 def addPart(partName, imageName):
-    with open(filename, "w+") as file:
+    with open(filename, "a") as file:
         file.write(partName + "%" + imageName + "\n")
     return
 
